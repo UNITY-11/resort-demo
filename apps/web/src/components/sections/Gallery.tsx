@@ -1,17 +1,16 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
-import { OrganicImage } from "../ui/OrganicImage";
+import { GalleryCard } from "../ui/GalleryCard";
 import { TornPaper } from "../ui/TornPaper";
 import { resortData } from "@/data/resort-data";
 
 export function Gallery() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const images = resortData.gallery;
 
@@ -19,88 +18,50 @@ export function Gallery() {
     <section
       id="gallery"
       ref={ref}
-      className="relative py-24 md:py-40 bg-ivory paper-texture overflow-hidden"
+      className="relative pt-24 pb-40 md:pt-40 md:pb-64 bg-[url('/munnar.png')] bg-cover bg-center bg-fixed"
       aria-label="Gallery"
     >
-      <TornPaper position="top" color="#FEFDF5" className="relative z-20" />
+      {/* ─── Top Torn Paper Transition ─── */}
+      <TornPaper position="top" color="var(--color-ivory)" className="absolute top-0 w-full z-20" />
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+      <div className="relative z-30 max-w-[1400px] mx-auto px-6 md:px-12 pt-16">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-32">
-          <SectionLabel label="Chapter 06 — Gallery" align="center" />
-          <TextReveal className="mt-8">
-            <h2 className="fluid-heading font-heading text-charcoal">
-              A Visual <span className="italic text-forest">Masterpiece</span>
+          <SectionLabel label="Chapter 05 — Gallery" align="center" className="text-gold" />
+          <TextReveal className="mt-8" splitLetters={true}>
+            <h2 className="fluid-heading font-heading text-ivory drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>
+              A Visual <span className="italic text-gold">Masterpiece</span>
             </h2>
+          </TextReveal>
+          <TextReveal delay={0.2} className="mt-6">
+            <p className="text-ivory text-sm md:text-base max-w-2xl mx-auto font-body font-medium drop-shadow-md" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
+              Explore the raw beauty of our sanctuary. Every frame captures a moment where luxury and wild nature harmoniously blend.
+            </p>
           </TextReveal>
         </div>
 
-        {/* ─── Editorial Scrapbook Collage ─── */}
-        {/* Not a standard grid, but a carefully staggered flex layout to feel organic */}
-        <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-center md:items-start gap-8 md:gap-x-12 md:gap-y-24">
+        {/* ─── Ladder Layout ─── */}
+        <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-start gap-8 md:gap-x-12 md:gap-y-24">
           {images.map((img, i) => {
-            // Elegant sizes without rotation
-            const rotate = 0;
-            const maskIdx = i % 12; // Cycle through all 12 masks
-            
-            // Varied sizing classes
-            const sizeClass = 
-              i % 4 === 0 ? "w-full md:w-[45%] lg:w-[40%] xl:w-[35%]" : // Large
-              i % 3 === 0 ? "w-full md:w-[35%] lg:w-[30%] xl:w-[25%]" : // Medium
-              "w-full md:w-[40%] lg:w-[35%] xl:w-[30%]"; // Standard
-              
-            // Margin offsets to break grid
-            const marginClass = 
-              i % 4 === 1 ? "md:mt-24 lg:mt-32" : 
-              i % 3 === 2 ? "md:-mt-12 lg:-mt-24" : "";
+            // Ladder (staggered) effect using only positive margins to prevent vertical overlapping
+            const marginClass =
+              i % 3 === 1 ? "md:mt-24 lg:mt-32" :
+              i % 3 === 2 ? "md:mt-12 lg:mt-16" : "";
 
             return (
               <motion.div
-                key={img.alt}
-                initial={{ opacity: 0, y: 60 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.9,
-                  delay: 0.1 * (i % 3),
-                  type: "spring",
-                  stiffness: 70,
-                  damping: 15
-                }}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative group ${sizeClass} ${marginClass} flex flex-col`}
-                style={{ zIndex: hoveredIndex === i ? 40 : 10 }}
+                key={img.src}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: (i % 3) * 0.1 }}
+                viewport={{ once: true, margin: "-10%" }}
+                className={`w-full md:w-[45%] lg:w-[30%] xl:w-[28%] ${marginClass}`}
               >
-                {/* Main Image */}
-                <OrganicImage
+                <GalleryCard
                   src={img.src}
                   alt={img.alt}
-                  width={800}
-                  height={i % 2 === 0 ? 900 : 600}
-                  maskIndex={maskIdx}
-                  containerClassName="w-full aspect-[4/5] md:aspect-auto md:min-h-[450px] cursor-pointer"
-                  imageClassName={`transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] ${hoveredIndex === i ? 'scale-105' : 'scale-100'}`}
-                  hasShadow={true}
-                  hasTape={false}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  caption={img.caption}
                 />
-
-                <motion.div 
-                  className={`absolute ${
-                    i % 2 === 0 ? "-bottom-6 -right-4 text-right" : "-bottom-8 left-4 text-left"
-                  } z-20 pointer-events-none`}
-                  animate={{ opacity: hoveredIndex === null || hoveredIndex === i ? 1 : 0.3 }}
-                >
-                  <p className="font-heading italic text-xl md:text-2xl text-charcoal/90 bg-cream/90 backdrop-blur-sm px-6 py-3 border border-gold/20 shadow-lg">
-                    {img.caption}
-                  </p>
-                  <div className={`mt-2 flex items-center gap-2 ${i % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
-                    <div className="w-4 h-px bg-gold" />
-                    <span className="text-[9px] tracking-[0.2em] uppercase text-stone font-body font-bold">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                </motion.div>
               </motion.div>
             );
           })}
