@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { cormorant, inter } from "@/lib/fonts";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,10 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-ivory text-charcoal antialiased">
+      <body className="bg-ivory text-charcoal antialiased cursor-none">
+        <CustomCursor />
         <SmoothScrollProvider>
           <GrainOverlay />
           {children}
+          <Footer />
         </SmoothScrollProvider>
       </body>
     </html>
