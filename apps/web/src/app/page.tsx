@@ -1,7 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { ResortStory } from "@/components/sections/ResortStory";
 import { LuxuryVillas } from "@/components/sections/LuxuryVillas";
-import { TheResort } from "@/components/sections/TheResort";
 import { BookingCTA } from "@/components/sections/BookingCTA";
 import dynamic from "next/dynamic";
 
@@ -21,6 +20,8 @@ const Testimonials = dynamic(
   { ssr: true }
 );
 
+
+
 export default function Home() {
   return (
     <main className="relative bg-ivory">
@@ -28,7 +29,6 @@ export default function Home() {
       <ResortStory />
       <LuxuryVillas />
       <SignatureExperiences />
-      <TheResort />
       <Gallery />
       <Testimonials />
       <BookingCTA />
