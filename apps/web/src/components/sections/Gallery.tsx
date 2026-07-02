@@ -24,7 +24,7 @@ export function Gallery() {
       {/* ─── Top Torn Paper Transition ─── */}
       <TornPaper position="top" color="var(--color-ivory)" className="absolute top-0 w-full z-20" />
 
-      <div className="relative z-30 max-w-[1400px] mx-auto px-6 md:px-12 pt-16">
+      <div className="relative z-30 max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-32">
           <SectionLabel label="Chapter 05 — Gallery" align="center" className="text-gold" />
@@ -46,7 +46,7 @@ export function Gallery() {
             // Ladder (staggered) effect using only positive margins to prevent vertical overlapping
             const marginClass =
               i % 3 === 1 ? "md:mt-24 lg:mt-32" :
-              i % 3 === 2 ? "md:mt-12 lg:mt-16" : "";
+                i % 3 === 2 ? "md:mt-12 lg:mt-16" : "";
 
             return (
               <motion.div
