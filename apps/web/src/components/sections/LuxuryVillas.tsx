@@ -6,6 +6,8 @@ import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
 import { TornPaper } from "../ui/TornPaper";
 import { resortData } from "@/data/resort-data";
+import { KeralaMandala } from "@/lib/decorative-svgs";
+import { FloatingElement } from "../ui/FloatingElement";
 import { IoBedOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { TbPool, TbRulerMeasure } from "react-icons/tb";
@@ -19,58 +21,40 @@ export function LuxuryVillas() {
 
   const villas = resortData.villas;
 
-  // Background images for the sticky section (Idukki tea plantations / nature)
-  const bgImages = [
-    "https://images.unsplash.com/photo-1593693397690-362bb9a11540?q=80&w=2000&auto=format&fit=crop", // Tea plantation hills
-    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=2000&auto=format&fit=crop", // Winding road
-    "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?q=80&w=2000&auto=format&fit=crop", // Infinity pool
-  ];
-
-  // Opacity transforms for crossfading backgrounds
-  const bg1Opacity = useTransform(scrollYProgress, [0, 0.33, 0.66], [1, 1, 0]);
-  const bg2Opacity = useTransform(scrollYProgress, [0.33, 0.66, 0.99], [0, 1, 0]);
-  const bg3Opacity = useTransform(scrollYProgress, [0.66, 0.99, 1], [0, 1, 1]);
-
   return (
     <section
       id="villas"
       ref={containerRef}
-      className="relative w-full"
+      className="relative w-full bg-white"
       aria-label="Luxury Villas"
     >
+      <div className="absolute top-0 left-0 w-full z-20">
+        <TornPaper position="top" color="var(--color-linen)" />
+      </div>
+
       {/* ─── STICKY BACKGROUNDS ─── */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-charcoal">
-        {/* Torn paper overlay at the very top for transition */}
-        <div className="absolute top-0 left-0 w-full z-20">
-          <TornPaper position="top" color="#F0E9E0" variant="jagged" />
-        </div>
-        
-        <motion.div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImages[0]})`, opacity: bg1Opacity }}
-        />
-        <motion.div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImages[1]})`, opacity: bg2Opacity }}
-        />
-        <motion.div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImages[2]})`, opacity: bg3Opacity }}
-        />
-        
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-charcoal/40 backdrop-blur-[2px]" />
+      <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-white">
+        {/* Animated Botanical Elements in the background */}
+        <FloatingElement duration={20} distance={15} className="absolute -top-20 -left-20 opacity-15 text-gold">
+          <KeralaMandala className="w-[40rem] h-auto animate-[spin_60s_linear_infinite]" opacity={1} />
+        </FloatingElement>
+        <FloatingElement duration={25} distance={10} delay={2} className="absolute -bottom-40 -right-20 opacity-10 text-gold">
+          <KeralaMandala className="w-[50rem] h-auto animate-[spin_80s_linear_infinite_reverse]" opacity={1} />
+        </FloatingElement>
+        <FloatingElement duration={30} distance={20} delay={1} className="absolute top-1/4 left-1/3 opacity-5 text-gold">
+          <KeralaMandala className="w-[60rem] h-auto animate-[spin_120s_linear_infinite]" opacity={1} />
+        </FloatingElement>
       </div>
 
       {/* ─── SCROLLING CARDS ─── */}
       <div className="relative z-10 w-full -mt-[100vh]">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 pt-32 pb-32">
-          
+
           {/* Section Header */}
-          <div className="mb-40 md:mb-64 pt-20">
-            <SectionLabel label="Chapter 03 — Accommodations" className="text-gold" />
-            <TextReveal className="mt-6">
-              <h2 className="fluid-heading font-heading text-ivory max-w-2xl text-shadow-lg">
+          <div className="mb-40 md:mb-64 pt-20 flex flex-col items-center text-center">
+            <SectionLabel label="Chapter 03 — Accommodations" className="text-gold" align="center" />
+            <TextReveal className="mt-6" splitLetters={true}>
+              <h2 className="fluid-heading font-heading text-charcoal max-w-2xl text-shadow-sm mx-auto">
                 Sanctuaries of
                 <br />
                 <span className="italic text-gold">Space & Light</span>
@@ -78,97 +62,123 @@ export function LuxuryVillas() {
             </TextReveal>
           </div>
 
-          <div className="space-y-[40vh] md:space-y-[60vh] pb-[20vh]">
+          <div className="flex flex-col gap-[30vh] md:gap-[50vh] pb-[20vh] max-w-7xl mx-auto">
             {villas.map((villa, i) => {
-              const isReversed = i % 2 !== 0;
-
               return (
-                <div
+                <motion.div
                   key={villa.name}
-                  className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}
+                  initial={{ opacity: 0, y: 80 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col lg:flex-row items-stretch mask-deckled shadow-2xl overflow-hidden bg-forest sticky"
+                  style={{ top: `calc(5vh + ${i * 30}px)`, zIndex: 10 + i }}
                 >
                   {/* Image Column */}
-                  <div className="w-full lg:w-1/2 relative group perspective-1000">
-                    <div className="w-full aspect-[4/3] rounded-[100px] overflow-hidden shadow-2xl border border-white/20 relative">
-                      <img 
-                        src={villa.image} 
+                  <div className="w-full lg:w-[55%] relative group perspective-1000 lg:order-1">
+                    <div className="w-full h-full overflow-hidden relative min-h-[30vh]">
+                      <img
+                        src={villa.image}
                         alt={villa.name}
                         className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                      {/* Vignette overlay to darken only around the edges of the image */}
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.6)_150%)] pointer-events-none transition-opacity duration-500 group-hover:opacity-0" />
                     </div>
                   </div>
 
-                  {/* Solid Pill Card Column */}
-                  <div className="w-full lg:w-1/2 flex justify-center">
-                    <div className="bg-forest p-10 md:p-14 shadow-2xl w-full max-w-xl rounded-[100px] border border-forest-light relative overflow-hidden">
-                      {/* Decorative internal line */}
-                      <div className="absolute inset-4 border border-white/10 rounded-[85px] pointer-events-none" />
-                      
-                      <div className="flex items-center gap-3 mb-6 relative z-10">
-                        <span className="font-heading text-4xl md:text-5xl text-gold/80 leading-none mr-2">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <div className="w-12 h-px bg-gold/50" />
-                        <span className="text-[9px] tracking-[0.3em] uppercase text-ivory/80 font-body">
-                          Villa Collection
-                        </span>
+                  {/* Text Column */}
+                  <div 
+                    className="w-full lg:w-[55%] p-6 md:p-8 lg:p-10 flex flex-col justify-center relative bg-forest z-10 lg:order-2 lg:-ml-[10%] mask-ripped-left"
+                  >
+                    <div className="flex items-center gap-3 mb-4 relative z-10">
+                      <span className="font-heading text-3xl md:text-4xl text-gold/80 leading-none mr-2">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className="w-12 h-px bg-gold/50" />
+                      <span className="text-[9px] tracking-[0.3em] uppercase text-ivory/80 font-body">
+                        Villa Collection
+                      </span>
+                    </div>
+
+                    <h3 className="font-heading text-3xl md:text-4xl text-ivory mb-4 relative z-10">
+                      {villa.name}
+                    </h3>
+
+                    <p className="text-ivory/80 text-sm md:text-base leading-relaxed mb-6 font-body font-light relative z-10">
+                      {villa.description}
+                    </p>
+
+                    {/* Editorial Specs List */}
+                    <div className="space-y-3 mb-8 border-l border-gold/30 pl-6 relative z-10">
+                      <div className="flex items-center gap-4 text-ivory/90">
+                        <TbRulerMeasure size={16} className="text-gold" />
+                        <span className="text-sm font-body tracking-wider">{villa.area}</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-ivory/90">
+                        <HiOutlineUsers size={16} className="text-gold" />
+                        <span className="text-sm font-body tracking-wider">{villa.guests} Guests</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-ivory/90">
+                        <IoBedOutline size={16} className="text-gold" />
+                        <span className="text-sm font-body tracking-wider">{villa.bedrooms} Bedrooms</span>
+                      </div>
+                      {villa.pool && (
+                        <div className="flex items-center gap-4 text-ivory/90">
+                          <TbPool size={16} className="text-gold" />
+                          <span className="text-sm font-body tracking-wider">Private Infinity Pool</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Booking Tag */}
+                    <div className="flex items-center justify-between border-t border-white/10 pt-4 relative z-10">
+                      <div>
+                        <p className="text-[9px] tracking-[0.2em] uppercase text-ivory/60 font-body mb-1">
+                          From
+                        </p>
+                        <p className="font-heading text-3xl text-ivory">
+                          ${villa.price.toLocaleString()}
+                          <span className="text-sm text-ivory/70 ml-1 font-body">
+                            / night
+                          </span>
+                        </p>
                       </div>
 
-                      <h3 className="font-heading text-3xl md:text-5xl text-ivory mb-6 relative z-10">
-                        {villa.name}
-                      </h3>
-
-                      <p className="text-ivory/80 text-sm md:text-base leading-relaxed mb-10 font-body font-light relative z-10">
-                        {villa.description}
-                      </p>
-
-                      {/* Editorial Specs List */}
-                      <div className="space-y-4 mb-12 border-l border-gold/30 pl-6 relative z-10">
-                        <div className="flex items-center gap-4 text-ivory/90">
-                          <TbRulerMeasure size={16} className="text-gold" />
-                          <span className="text-sm font-body tracking-wider">{villa.area}</span>
-                        </div>
-                        <div className="flex items-center gap-4 text-ivory/90">
-                          <HiOutlineUsers size={16} className="text-gold" />
-                          <span className="text-sm font-body tracking-wider">{villa.guests} Guests</span>
-                        </div>
-                        <div className="flex items-center gap-4 text-ivory/90">
-                          <IoBedOutline size={16} className="text-gold" />
-                          <span className="text-sm font-body tracking-wider">{villa.bedrooms} Bedrooms</span>
-                        </div>
-                        {villa.pool && (
-                          <div className="flex items-center gap-4 text-ivory/90">
-                            <TbPool size={16} className="text-gold" />
-                            <span className="text-sm font-body tracking-wider">Private Infinity Pool</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Booking Tag */}
-                      <div className="flex items-center justify-between border-t border-white/10 pt-6 relative z-10">
-                        <div>
-                          <p className="text-[9px] tracking-[0.2em] uppercase text-ivory/60 font-body mb-1">
-                            From
-                          </p>
-                          <p className="font-heading text-3xl text-ivory">
-                            ${villa.price.toLocaleString()}
-                            <span className="text-sm text-ivory/70 ml-1 font-body">
-                              / night
-                            </span>
-                          </p>
-                        </div>
-                        
-                        <a href="#booking" className="group flex items-center justify-center w-12 h-12 rounded-full bg-gold/20 hover:bg-gold transition-all duration-300">
-                          <span className="text-gold group-hover:text-forest transition-colors duration-300">→</span>
-                        </a>
-                      </div>
+                      <a href="#booking" className="group flex items-center justify-center w-12 h-12 rounded-full bg-gold/20 hover:bg-gold transition-all duration-300">
+                        <span className="text-gold group-hover:text-forest transition-colors duration-300">→</span>
+                      </a>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
+        </div>
+      </div>
+
+      {/* ─── MOUNTAIN IMAGE TRANSITION ─── */}
+      <div className="relative w-full h-[60vh] md:h-[100vh]">
+        <img
+          src="/mountain.png"
+          alt="Mountain Landscape"
+          className="w-full h-full object-cover"
+        />
+
+        {/* Content overlay on the image */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-6 text-center">
+          <h2 className="fluid-heading font-heading text-ivory drop-shadow-xl max-w-4xl leading-tight">
+            Where the Earth <br />
+            <span className="italic text-gold">Meets the Sky</span>
+          </h2>
+          <p className="mt-6 text-ivory/90 font-body text-lg md:text-xl max-w-2xl drop-shadow-md font-light">
+            Discover the untamed beauty of the High Ranges, where every morning is painted in mist and gold.
+          </p>
+        </div>
+
+        {/* Torn paper covering the straight bottom cut of the image, tearing upwards. Color matches Chapter 4 (ivory). */}
+        <div className="absolute bottom-0 left-0 w-full z-20">
+          <TornPaper position="bottom" color="var(--color-ivory)" />
         </div>
       </div>
     </section>
