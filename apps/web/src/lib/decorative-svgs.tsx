@@ -114,3 +114,53 @@ export function HandwrittenArrow({ className = "", opacity = 0.5, direction = "r
     </svg>
   );
 }
+
+export function KeralaMandala({ className = "", opacity = 1 }: { className?: string; opacity?: number }) {
+  return (
+    <svg viewBox="-100 -100 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className={className} style={{ opacity }}>
+      <path d="M 0 0 C 39.2 -7.9, 39.2 7.9, 80.0 0.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 39.2 7.9, 39.2 -7.9, 80.0 0.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 39.3 7.7, 33.2 22.3, 73.9 30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 33.2 22.3, 39.3 7.7, 73.9 30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 33.3 22.1, 22.1 33.3, 56.6 56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 22.1 33.3, 33.3 22.1, 56.6 56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 22.3 33.2, 7.7 39.3, 30.6 73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 7.7 39.3, 22.3 33.2, 30.6 73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 7.9 39.2, -7.9 39.2, 0.0 80.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -7.9 39.2, 7.9 39.2, 0.0 80.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -7.7 39.3, -22.3 33.2, -30.6 73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -22.3 33.2, -7.7 39.3, -30.6 73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -22.1 33.3, -33.3 22.1, -56.6 56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -33.3 22.1, -22.1 33.3, -56.6 56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -33.2 22.3, -39.3 7.7, -73.9 30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -39.3 7.7, -33.2 22.3, -73.9 30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -39.2 7.9, -39.2 -7.9, -80.0 0.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -39.2 -7.9, -39.2 7.9, -80.0 0.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -39.3 -7.7, -33.2 -22.3, -73.9 -30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -33.2 -22.3, -39.3 -7.7, -73.9 -30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -33.3 -22.1, -22.1 -33.3, -56.6 -56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -22.1 -33.3, -33.3 -22.1, -56.6 -56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -22.3 -33.2, -7.7 -39.3, -30.6 -73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -7.7 -39.3, -22.3 -33.2, -30.6 -73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C -7.9 -39.2, 7.9 -39.2, -0.0 -80.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 7.9 -39.2, -7.9 -39.2, -0.0 -80.0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 7.7 -39.3, 22.3 -33.2, 30.6 -73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 22.3 -33.2, 7.7 -39.3, 30.6 -73.9" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 22.1 -33.3, 33.3 -22.1, 56.6 -56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 33.3 -22.1, 22.1 -33.3, 56.6 -56.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 33.2 -22.3, 39.3 -7.7, 73.9 -30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 0 0 C 39.3 -7.7, 33.2 -22.3, 73.9 -30.6" stroke="currentColor" strokeWidth="0.5" fill="none" />
+      <path d="M 20.0 0.0 Q 57.3 -17.7 100.0 0.0 Q 57.3 17.7 20.0 0.0" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M 14.1 14.1 Q 53.1 28.0 70.7 70.7 Q 28.0 53.1 14.1 14.1" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M 0.0 20.0 Q 17.7 57.3 0.0 100.0 Q -17.7 57.3 0.0 20.0" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M -14.1 14.1 Q -28.0 53.1 -70.7 70.7 Q -53.1 28.0 -14.1 14.1" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M -20.0 0.0 Q -57.3 17.7 -100.0 0.0 Q -57.3 -17.7 -20.0 0.0" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M -14.1 -14.1 Q -53.1 -28.0 -70.7 -70.7 Q -28.0 -53.1 -14.1 -14.1" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M -0.0 -20.0 Q -17.7 -57.3 -0.0 -100.0 Q 17.7 -57.3 -0.0 -20.0" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <path d="M 14.1 -14.1 Q 28.0 -53.1 70.7 -70.7 Q 53.1 -28.0 14.1 -14.1" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.05" />
+      <circle cx="0" cy="0" r="20" stroke="currentColor" strokeWidth="1" strokeDasharray="2 4" />
+      <circle cx="0" cy="0" r="45" stroke="currentColor" strokeWidth="0.5" />
+      <circle cx="0" cy="0" r="85" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 6" />
+    </svg>
+  );
+}
