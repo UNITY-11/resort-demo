@@ -11,7 +11,7 @@ export const resortData = {
     heading: "Sculpted into the Western Ghats",
     quote: "True luxury is harmony. It is architecture that honors the landscape and service that anticipates the unspoken.",
     body: "Nestled high in the Cardamom Hills near the iconic Idukki Arch Dam, our resort is a celebration of modern tropical architecture and Kerala's raw natural beauty. Every bungalow was designed with clean lines and expansive glass to invite the majestic reservoir and rolling tea plantations inside, offering a highly curated, ultra-luxury escape from the ordinary.",
-    image: "https://images.unsplash.com/photo-1613490908592-50d4f1073849?q=80&w=2070&auto=format&fit=crop", // Luxury interior looking out to mountains
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Munnar_Kerala_India.jpg/1280px-Munnar_Kerala_India.jpg", // Luxury interior looking out to mountains
   },
 
   villas: [
@@ -54,7 +54,7 @@ export const resortData = {
     {
       title: "Arch Dam Helicopter Tour",
       description: "An exclusive aerial perspective of the magnificent Idukki Arch Dam and the sprawling reservoir.",
-      image: "https://images.unsplash.com/photo-1579979774390-3482594a50d2?q=80&w=2070&auto=format&fit=crop", // Helicopter over mountains
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&q=80", // Mountains/landscape
     },
     {
       title: "Private Tea Tasting",
@@ -67,57 +67,67 @@ export const resortData = {
       image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?q=80&w=2070&auto=format&fit=crop", // Fine dining plating
     },
     {
-      title: "Reservoir Yacht Cruise",
-      description: "Sail the serene waters of the Idukki reservoir aboard our private luxury yacht at sunset.",
-      image: "https://images.unsplash.com/photo-1562624475-96102660a927?q=80&w=2070&auto=format&fit=crop", // Luxury boat on water
+      title: "Off-Road Jeep Safari",
+      description: "Conquer the rugged terrain of the Western Ghats in a vintage 4x4 open-top jeep, exploring hidden waterfalls and dense forests.",
+      image: "https://images.unsplash.com/photo-1533560904424-a0c61dc306fc?w=1000&q=80",
+    },
+    {
+      title: "Cardamom Peak Trekking",
+      description: "A guided, adrenaline-pumping hike to the highest peaks surrounding the resort, offering panoramic views of the entire Idukki district.",
+      image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=1000&q=80",
     },
     {
       title: "Ayurvedic Spa Pavilion",
-      description: "Bespoke wellness treatments combining modern luxury with ancient Kerala Ayurvedic traditions.",
-      image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop", // Elegant spa
-    },
-    {
-      title: "Cardamom Hill Trek",
-      description: "A curated guided hike through the mist-shrouded Western Ghats, complete with a gourmet picnic.",
-      image: "https://images.unsplash.com/photo-1582424881267-27e163af4b97?q=80&w=2070&auto=format&fit=crop", // Kerala hills
+      description: "Unwind after an adventurous day with bespoke wellness treatments combining modern luxury with ancient Kerala Ayurvedic traditions.",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1000&q=80",
     },
   ],
 
   gallery: [
     {
-      src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80",
+      src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000&q=80",
       alt: "Modern bungalow exterior",
       caption: "Architectural precision",
     },
     {
-      src: "https://images.unsplash.com/photo-1613490908592-50d4f1073849?w=1000&q=80",
+      src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000&q=80",
       alt: "Luxury interior",
       caption: "Sleek living spaces",
     },
     {
-      src: "https://images.unsplash.com/photo-1599026419087-0b81e812b1d3?w=1000&q=80",
+      src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1000",
       alt: "Mountain view pool",
       caption: "Infinity above the reservoir",
     },
     {
-      src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1000&q=80",
+      src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=1000&q=80",
       alt: "Minimalist architecture",
       caption: "Clean modern lines",
     },
     {
-      src: "https://images.unsplash.com/photo-1582424881267-27e163af4b97?w=1000&q=80",
+      src: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1000&q=80",
       alt: "Misty Kerala mountains",
       caption: "The Western Ghats",
     },
     {
-      src: "https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?w=1000&q=80",
-      alt: "Tea tasting",
-      caption: "Local flavors refined",
+      src: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1000&q=80",
+      alt: "Luxury spa bath",
+      caption: "Sanctuary of peace",
     },
     {
-      src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1000&q=80",
+      src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1000&q=80",
       alt: "Luxury bedroom",
       caption: "Rest in elegance",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1000",
+      alt: "Private tropical terrace",
+      caption: "Nature at your door",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=1000",
+      alt: "Luxury resort dining",
+      caption: "Culinary excellence",
     },
   ],
 
