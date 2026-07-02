@@ -18,16 +18,13 @@ export function ResortStory() {
       className="relative bg-linen linen-texture overflow-hidden"
       aria-label="Our Story"
     >
-      <TornPaper position="top" color="#F0E9E0" className="relative z-20" />
+
 
       <div className="py-24 md:py-40">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           
-          <div className="flex justify-between items-end mb-16 md:mb-24">
-            <SectionLabel label="Chapter 02 — Our Philosophy" />
-            <div className="hidden md:block w-32">
-              <EditorialDivider variant="torn" color="var(--color-gold)" />
-            </div>
+          <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+            <SectionLabel label="Chapter 02 — Our Philosophy" className="text-gold" align="center" />
           </div>
 
           {/* ─── Editorial Split Layout ─── */}
@@ -43,9 +40,11 @@ export function ResortStory() {
               <div 
                 className="bg-ivory/80 backdrop-blur-sm p-8 md:p-12 shadow-2xl border border-ivory/40"
               >
-                <TextReveal>
-                  <h2 className="fluid-heading font-heading text-charcoal mb-10 leading-[1.1]">
-                    {story.heading}
+                <TextReveal splitLetters={true}>
+                  <h2 className="fluid-heading font-heading text-charcoal mb-10 leading-[1.1] text-center text-shadow-sm">
+                    Sculpted into the
+                    <br />
+                    <span className="italic text-gold">Western Ghats</span>
                   </h2>
                 </TextReveal>
 
@@ -108,7 +107,7 @@ export function ResortStory() {
                 >
                   <div className="relative aspect-square overflow-hidden rounded-sm">
                     <img 
-                      src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400&h=400&fit=crop&q=80" 
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kerala_Backwaters.jpg/1280px-Kerala_Backwaters.jpg" 
                       alt="Resort detail"
                       className="w-full h-full object-cover"
                     />
@@ -122,8 +121,6 @@ export function ResortStory() {
           </div>
         </div>
       </div>
-
-      <TornPaper position="bottom" color="#F2EBE3" />
     </section>
   );
 }
