@@ -17,18 +17,27 @@ export function Testimonials() {
   return (
     <section
       ref={ref}
-      className="relative py-32 md:py-48 bg-forest text-ivory cotton-texture overflow-hidden"
+      className="relative py-32 md:py-48 bg-forest text-ivory overflow-visible"
       aria-label="Guest Journal"
     >
+      {/* ─── Top Torn Paper Border ─── */}
+      <TornPaper 
+        position="bottom" 
+        color="var(--color-forest)" 
+        className="absolute bottom-full w-full z-30" 
+      />
+
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10 text-center">
         
-        <SectionLabel label="What Guests Say About Us" className="text-gold justify-center mb-8" />
-        
-        <TextReveal className="mb-20">
-          <h2 className="fluid-heading font-heading text-ivory">
-            The Élara <span className="italic text-gold">Experience</span>
-          </h2>
-        </TextReveal>
+        <div className="flex flex-col items-center text-center mb-20">
+          <SectionLabel label="What Guests Say About Us" className="text-gold mb-8" align="center" />
+          
+          <TextReveal splitLetters={true}>
+            <h2 className="fluid-heading font-heading text-ivory">
+              The Élara <span className="italic text-gold">Experience</span>
+            </h2>
+          </TextReveal>
+        </div>
 
         <div className="flex flex-col gap-24">
           {testimonials.slice(0, 2).map((t, i) => (
@@ -88,7 +97,7 @@ export function Testimonials() {
 
       </div>
       <div className="absolute bottom-0 w-full z-20">
-        <TornPaper position="bottom" color="#FAF7F0" variant="jagged" />
+        <TornPaper position="bottom" color="var(--color-cream)" variant="jagged" />
       </div>
     </section>
   );
