@@ -21,22 +21,24 @@ export function TheResort() {
     >
       <div className="py-24 md:py-40">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          {/* ─── Organic Natural Layout ─── */}
-          
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
+          {/* ─── Centered Heading Section ─── */}
+          <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+            <SectionLabel label="Chapter 05 — The Grounds" className="text-gold" align="center" />
+            
+            <TextReveal className="mt-8" splitLetters={true}>
+              <h2 className="fluid-heading font-heading text-charcoal leading-[1.1] max-w-4xl mx-auto text-shadow-sm">
+                Where the Land
+                <br />
+                <span className="italic text-gold mr-4">Embraces</span>
+                the Water
+              </h2>
+            </TextReveal>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative items-center">
             
             {/* Left side: Editorial text (narrow) */}
-            <div className="lg:w-[35%] relative z-20 pt-10">
-              <SectionLabel label="Chapter 05 — The Grounds" className="text-forest" />
-              
-              <TextReveal className="mt-12 mb-10">
-                <h2 className="fluid-heading font-heading text-forest leading-[1.1]">
-                  Where the Land
-                  <br />
-                  <span className="italic text-bronze mr-4">Embraces</span>
-                  the Water
-                </h2>
-              </TextReveal>
+            <div className="lg:w-[35%] relative z-20">
 
               <TextReveal delay={0.2}>
                 <p className="text-charcoal/80 text-base md:text-lg leading-relaxed font-body font-light mb-12">
