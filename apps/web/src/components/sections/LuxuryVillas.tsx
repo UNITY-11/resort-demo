@@ -34,10 +34,10 @@ export function LuxuryVillas() {
       </div>
 
       {/* ─── STICKY BACKGROUNDS ─── */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-white">
+      <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-white pointer-events-none">
         <motion.div style={{ opacity: useTransform(scrollYProgress, [0.7, 0.85], [1, 0]), willChange: "opacity" }}>
-        {/* Kathakali #1 — left side, stays centered */}
-        <div className="absolute top-1/2 left-4 -translate-y-1/2 text-gold">
+        {/* Kathakali #1 — left side (top left on mobile) */}
+        <div className="absolute top-4 md:top-1/2 left-0 md:left-4 md:-translate-y-1/2 text-gold scale-[0.5] md:scale-100 origin-top-left md:origin-left opacity-40 md:opacity-100">
           <div className="relative w-[300px] h-[360px]">
             <motion.div
               className="absolute top-0 left-0"
@@ -51,8 +51,8 @@ export function LuxuryVillas() {
           </div>
         </div>
 
-        {/* Kathakali #2 — right side, stays centered */}
-        <div className="absolute top-1/2 right-4 -translate-y-1/2 text-forest">
+        {/* Kathakali #2 — right side (bottom right on mobile) */}
+        <div className="absolute bottom-4 md:bottom-auto md:top-1/2 right-0 md:right-4 md:-translate-y-1/2 text-forest scale-[0.5] md:scale-100 origin-bottom-right md:origin-right opacity-40 md:opacity-100">
           <div className="relative w-[300px] h-[360px]">
             <motion.div
               className="absolute top-0 right-0"
@@ -70,10 +70,10 @@ export function LuxuryVillas() {
 
       {/* ─── SCROLLING CARDS ─── */}
       <div className="relative z-10 w-full -mt-[100vh]">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 pt-32 pb-32">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 pt-16 md:pt-32 pb-16 md:pb-32">
 
           {/* Section Header */}
-          <div className="mb-40 md:mb-64 pt-20 flex flex-col items-center text-center">
+          <div className="mb-24 md:mb-64 pt-10 md:pt-20 flex flex-col items-center text-center">
             <SectionLabel label="Accommodations" className="text-gold" align="center" />
             <TextReveal className="mt-6" splitLetters={true}>
               <h2 className="fluid-heading font-heading text-charcoal max-w-2xl text-shadow-sm mx-auto">
@@ -84,14 +84,14 @@ export function LuxuryVillas() {
             </TextReveal>
           </div>
 
-          <div className="flex flex-col gap-32 md:gap-56 pb-[20vh] max-w-7xl mx-auto items-center px-4">
+          <div className="flex flex-col gap-16 md:gap-56 pb-12 md:pb-[20vh] max-w-7xl mx-auto items-center px-4">
             {villas.map((villa, i) => {
               return (
                 <motion.div
                   key={villa.name}
                   initial={{ opacity: 0, y: 80 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
+                  viewport={{ once: true, margin: "-5%" }}
                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                   className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-stretch gap-8 lg:gap-16 max-w-[1000px] w-full`}
                 >
@@ -180,16 +180,16 @@ export function LuxuryVillas() {
 
       {/* ─── VELOCITY MARQUEE & MOUNTAIN TRANSITION ─── */}
       {/* We use a wrapper with its own scroll mapping for the parallax effect */}
-      <div className="relative w-full h-[80vh] md:h-[120vh] -mt-[10vh] overflow-visible" style={{ zIndex: 0 }}>
+      <div className="relative w-full h-[80vh] md:h-[120vh] -mt-[15vh] md:-mt-[10vh] overflow-visible" style={{ zIndex: 0 }}>
         
         {/* The Marquee Layer (Scrolls down slower, going behind mountain) */}
         <motion.div 
-          className="absolute -top-[5%] md:-top-[10%] w-full z-0"
+          className="absolute -top-[10%] w-full z-0"
           style={{ 
             y: useTransform(scrollYProgress, [0.8, 1], [0, 300]) 
           }}
         >
-          <VelocityMarquee baseVelocity={-0.2} className="text-gold/30 font-heading text-[8rem] md:text-[15rem] leading-none uppercase tracking-tighter opacity-100">
+          <VelocityMarquee baseVelocity={-0.2} className="text-gold/30 font-heading text-7xl sm:text-[8rem] md:text-[15rem] leading-none uppercase tracking-tighter opacity-100 whitespace-nowrap">
             Sanctuaries of Space & Light — 
           </VelocityMarquee>
         </motion.div>
