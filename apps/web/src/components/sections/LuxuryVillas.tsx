@@ -35,12 +35,13 @@ export function LuxuryVillas() {
 
       {/* ─── STICKY BACKGROUNDS ─── */}
       <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-white">
-        <motion.div style={{ opacity: useTransform(scrollYProgress, [0.7, 0.85], [1, 0]) }}>
+        <motion.div style={{ opacity: useTransform(scrollYProgress, [0.7, 0.85], [1, 0]), willChange: "opacity" }}>
+        {/* Kathakali #1 — left side, stays centered */}
         <div className="absolute top-1/2 left-4 -translate-y-1/2 text-gold">
-          <div className="relative w-[360px] h-[360px]">
+          <div className="relative w-[300px] h-[360px]">
             <motion.div
               className="absolute top-0 left-0"
-              style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 180]) }}
+              style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 180]), willChange: "transform" }}
             >
               <KathakaliHalo opacity={0.12} className="w-[300px] h-[300px]" />
             </motion.div>
@@ -52,14 +53,14 @@ export function LuxuryVillas() {
 
         {/* Kathakali #2 — right side, stays centered */}
         <div className="absolute top-1/2 right-4 -translate-y-1/2 text-forest">
-          <div className="relative w-[360px] h-[360px]">
+          <div className="relative w-[300px] h-[360px]">
             <motion.div
-              className="absolute top-0 left-0"
-              style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, -180]) }}
+              className="absolute top-0 right-0"
+              style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, -180]), willChange: "transform" }}
             >
               <KathakaliHalo opacity={0.06} className="w-[300px] h-[300px]" />
             </motion.div>
-            <div className="absolute top-[10px] left-0">
+            <div className="absolute top-[10px] right-0">
               <AnimatedKathakaliHead opacity={0.06} className="w-[300px] h-[430px]" scrollProgress={scrollYProgress} expressionShift={2} />
             </div>
           </div>
@@ -73,7 +74,7 @@ export function LuxuryVillas() {
 
           {/* Section Header */}
           <div className="mb-40 md:mb-64 pt-20 flex flex-col items-center text-center">
-            <SectionLabel label="Chapter 03 — Accommodations" className="text-gold" align="center" />
+            <SectionLabel label="Accommodations" className="text-gold" align="center" />
             <TextReveal className="mt-6" splitLetters={true}>
               <h2 className="fluid-heading font-heading text-charcoal max-w-2xl text-shadow-sm mx-auto">
                 Sanctuaries of
