@@ -93,7 +93,7 @@ export function LuxuryVillas() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-5%" }}
                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-stretch gap-8 lg:gap-16 max-w-[1000px] w-full`}
+                  className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-stretch gap-8 lg:gap-16 max-w-[1200px] w-full`}
                 >
                   {/* Image Column */}
                   <div className="flex-1 w-full relative group mask-deckled shadow-2xl overflow-hidden bg-forest min-h-[250px] md:min-h-[350px]">
