@@ -209,8 +209,9 @@ export function KathakaliHalo({ className = "", opacity = 0.15 }: { className?: 
   for (let i = 0; i < dotCount; i++) {
     const angle = (i * 360) / dotCount;
     const rad = (angle * Math.PI) / 180;
-    const cx = 200 + 180 * Math.cos(rad);
-    const cy = 200 + 180 * Math.sin(rad);
+    // Round to 2 decimal places to avoid hydration mismatches
+    const cx = Math.round((200 + 180 * Math.cos(rad)) * 100) / 100;
+    const cy = Math.round((200 + 180 * Math.sin(rad)) * 100) / 100;
     dots.push(<circle key={`dot-${i}`} cx={cx} cy={cy} r="2.5" fill="currentColor" />);
   }
 
@@ -226,10 +227,17 @@ export function KathakaliHalo({ className = "", opacity = 0.15 }: { className?: 
     const rm = (mid * Math.PI) / 180;
     const R = 138;
     const Ri = 130;
+    const x1 = Math.round((200 + R * Math.cos(r1)) * 100) / 100;
+    const y1 = Math.round((200 + R * Math.sin(r1)) * 100) / 100;
+    const xm = Math.round((200 + Ri * Math.cos(rm)) * 100) / 100;
+    const ym = Math.round((200 + Ri * Math.sin(rm)) * 100) / 100;
+    const x2 = Math.round((200 + R * Math.cos(r2)) * 100) / 100;
+    const y2 = Math.round((200 + R * Math.sin(r2)) * 100) / 100;
+
     scallops.push(
       <path
         key={`scallop-${i}`}
-        d={`M ${200 + R * Math.cos(r1)},${200 + R * Math.sin(r1)} Q ${200 + Ri * Math.cos(rm)},${200 + Ri * Math.sin(rm)} ${200 + R * Math.cos(r2)},${200 + R * Math.sin(r2)}`}
+        d={`M ${x1},${y1} Q ${xm},${ym} ${x2},${y2}`}
         stroke="currentColor"
         strokeWidth="1.5"
         fill="none"
