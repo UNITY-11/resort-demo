@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
@@ -43,17 +43,6 @@ export function SignatureExperiences() {
     window.addEventListener("resize", checkSize);
     return () => window.removeEventListener("resize", checkSize);
   }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax motion values for a 3-column grid:
-  // Center column moves UP strongly, Side columns move DOWN
-  // Using raw scrollYProgress to lock movement directly to scroll (no physics lag)
-  const yParallaxCenter = useTransform(scrollYProgress, [0, 1], [0, -300]);
-  const yParallaxSide = useTransform(scrollYProgress, [0, 1], [0, 250]);
 
   const experiences = resortData.experiences;
 
@@ -218,23 +207,20 @@ export function SignatureExperiences() {
               return (
                 <motion.div
                   key={exp.title}
-                  initial={{ opacity: 0, y: 50, scale: 0.95, filter: isDesktop ? "blur(0px)" : "blur(12px)" }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-5%" }}
                   transition={{
-                    duration: 0.8,
-                    delay: (i % 3) * 0.15,
+                    duration: 0.6,
+                    delay: (i % 3) * 0.1,
                     type: "spring",
                     stiffness: 100,
                     damping: 20
                   }}
                   className={`group relative ${config.gridClass}`}
                 >
-                  {/* Outer container to reduce width/height, wrapped with parallax motion */}
-                  <motion.div 
-                    style={isDesktop ? { y: parallax, willChange: "transform" } : {}}
-                    className="relative group shadow-2xl transition-transform duration-500 hover:scale-[1.02] w-[85%] md:w-[90%] max-w-[340px] mx-auto will-change-transform"
-                  >
+                  {/* Outer container to reduce width/height */}
+                  <div className="relative group shadow-2xl transition-transform duration-500 hover:scale-[1.02] w-[85%] md:w-[90%] max-w-[340px] mx-auto will-change-transform">
 
                     {/* The Image container with identical smooth torn CSS cutting on all four sides */}
                     <div className="relative w-full aspect-[4/5] overflow-hidden z-10 bg-[#e0dcd0] mask-rough-edge">
@@ -269,7 +255,7 @@ export function SignatureExperiences() {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </motion.div>
               );
             })}
