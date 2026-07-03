@@ -11,7 +11,7 @@ export const resortData = {
     heading: "Sculpted into the Western Ghats",
     quote: "True luxury is harmony. It is architecture that honors the landscape and service that anticipates the unspoken.",
     body: "Nestled high in the Cardamom Hills near the iconic Idukki Arch Dam, our resort is a celebration of modern tropical architecture and Kerala's raw natural beauty. Every bungalow was designed with clean lines and expansive glass to invite the majestic reservoir and rolling tea plantations inside, offering a highly curated, ultra-luxury escape from the ordinary.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Munnar_Kerala_India.jpg/1280px-Munnar_Kerala_India.jpg", // Luxury interior looking out to mountains
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop", // Luxury tropical resort architecture
   },
 
   villas: [
