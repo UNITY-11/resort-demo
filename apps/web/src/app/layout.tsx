@@ -4,6 +4,7 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
         <CustomCursor />
         <SmoothScrollProvider>
           <GrainOverlay />
+          <Navbar />
           {children}
           <Footer />
         </SmoothScrollProvider>
