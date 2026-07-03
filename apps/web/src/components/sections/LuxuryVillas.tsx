@@ -7,7 +7,7 @@ import { KathakaliHalo } from "@/lib/decorative-svgs";
 import { AnimatedKathakaliHead } from "../ui/AnimatedKathakaliHead";
 import { SectionLabel } from "../ui/SectionLabel";
 import { TornPaper } from "../ui/TornPaper";
-import { resortData } from "@/data/resort-data";
+import { resortData } from "@/config/resort-data";
 import { IoBedOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { TbPool, TbRulerMeasure } from "react-icons/tb";
