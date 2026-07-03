@@ -69,17 +69,17 @@ export function SignatureExperiences() {
         <Cloud x={20} y={320} scale={0.7} />
         <Cloud x={920} y={220} scale={1.4} />
 
-        {/* Flying Birds - Group A */}
+        {/* Flying Birds - Group A (Starts at beginning of loop) */}
         <g fill="currentColor" style={{ willChange: "transform" }}>
-          <animateTransform attributeName="transform" type="translate" from="1000 200" to="-300 200" dur="25s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" from="1200 200" to="-300 200" dur="40s" begin="0s" repeatCount="indefinite" />
           <FlappingBird x={0} y={0} scale={1.2} speed={0.9} delay={0} />
           <FlappingBird x={30} y={-15} scale={1.1} speed={1.0} delay={0.2} />
           <FlappingBird x={15} y={20} scale={1.3} speed={0.85} delay={0.4} />
         </g>
         
-        {/* Flying Birds - Group B */}
+        {/* Flying Birds - Group B (Starts 15 seconds into its loop - already on screen!) */}
         <g fill="currentColor" style={{ willChange: "transform" }}>
-          <animateTransform attributeName="transform" type="translate" from="1400 120" to="-300 120" dur="35s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" from="1200 120" to="-300 120" dur="45s" begin="-15s" repeatCount="indefinite" />
           <g opacity="0.7">
             <FlappingBird x={0} y={0} scale={0.9} speed={1.2} delay={0} />
             <FlappingBird x={25} y={-10} scale={0.85} speed={1.3} delay={0.3} />
@@ -88,18 +88,18 @@ export function SignatureExperiences() {
           </g>
         </g>
 
-        {/* Flying Birds - Group C */}
+        {/* Flying Birds - Group C (Starts 30 seconds into its loop - already on screen!) */}
         <g fill="currentColor" style={{ willChange: "transform" }}>
-          <animateTransform attributeName="transform" type="translate" from="1200 180" to="-300 180" dur="45s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" from="1200 180" to="-300 180" dur="50s" begin="-30s" repeatCount="indefinite" />
           <g opacity="0.5">
             <FlappingBird x={0} y={0} scale={0.7} speed={1.4} delay={0.5} />
             <FlappingBird x={20} y={-10} scale={0.65} speed={1.5} delay={0.7} />
           </g>
         </g>
 
-        {/* Flying Birds - Group D */}
+        {/* Flying Birds - Group D (Starts 10 seconds into its loop - already on screen!) */}
         <g fill="currentColor" style={{ willChange: "transform" }}>
-          <animateTransform attributeName="transform" type="translate" from="1700 80" to="-300 80" dur="30s" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" from="1200 80" to="-300 80" dur="35s" begin="-10s" repeatCount="indefinite" />
           <g opacity="0.6">
             <FlappingBird x={0} y={0} scale={1.0} speed={1.1} delay={0.2} />
             <FlappingBird x={35} y={10} scale={1.1} speed={1.0} delay={0.4} />
@@ -202,7 +202,6 @@ export function SignatureExperiences() {
               
               // 3-column grid: index 1, 4, 7... are the center column
               const isCenter = i % 3 === 1;
-              const parallax = isCenter ? yParallaxCenter : yParallaxSide;
 
               return (
                 <motion.div
