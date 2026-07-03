@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Button } from "../ui/Button";
+import { TornPaper } from "../ui/TornPaper";
 
 const navLinks = [
   { name: "The Story", href: "#story" },
@@ -15,10 +16,20 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
+    
+    const previous = scrollY.getPrevious() || 0;
+    
+    // Hide when scrolling down past 150px, show when scrolling up
+    if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    } else if (latest < previous) {
+      setIsHidden(false);
+    }
   });
 
   // Prevent scroll when menu is open
@@ -50,51 +61,39 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 border-b border-transparent ${
+        className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-500 ${
           isScrolled && !isOpen
-            ? "py-3 md:py-4 bg-ivory/90 backdrop-blur-md shadow-sm border-b-gold/10"
+            ? "pt-3 pb-0 md:pt-5 bg-[#FEFDF5]"
             : "py-4 md:py-6 bg-transparent"
-        }`}
+        } ${isHidden ? "lg:-translate-y-[150%]" : "lg:translate-y-0"}`}
       >
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between relative">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between relative pb-0 md:pb-0">
           
-          {/* Empty div to keep flex justify-between balanced if needed, or just let logo be absolute */}
-          <div className="hidden lg:block"></div>
+          {/* Desktop Left Links */}
+          <div className="hidden lg:flex items-center gap-8 text-gold text-xs font-body tracking-wider uppercase z-10 transition-colors duration-300">
+            <button onClick={() => scrollTo('#story')} className="hover:text-charcoal transition-colors">ABOUT</button>
+            <button onClick={() => scrollTo('#villas')} className="hover:text-charcoal transition-colors">ACCOMMODATIONS</button>
+            <button onClick={() => scrollTo('#experiences')} className="hover:text-charcoal transition-colors">EXPERIENCES</button>
+          </div>
 
           {/* Logo (Centered) */}
           <div 
-            className="cursor-pointer group flex items-center absolute left-1/2 -translate-x-1/2" 
+            className="cursor-pointer group flex items-center absolute left-1/2 -translate-x-1/2 z-10" 
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <span className="font-heading italic text-3xl md:text-4xl text-gold transition-colors duration-300">
               Élara
             </span>
-            <span className={`hidden md:inline-block text-[9px] tracking-[0.3em] uppercase ml-4 mt-2 font-body font-bold ${isOpen ? 'text-ivory/70' : 'text-stone'}`}>
-              Wilderness Reserve
-            </span>
           </div>
 
-          {/* Spacer for mobile to push toggle to right since logo is absolute */}
+          {/* Spacer for mobile to push toggle to right since logo is absolute and left links are hidden */}
           <div className="lg:hidden w-10"></div>
 
-          {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollTo(link.href)}
-                className="group relative overflow-hidden"
-              >
-                <span className={`text-[10px] tracking-[0.2em] uppercase font-body font-bold transition-colors duration-300 group-hover:text-gold ${isOpen ? 'text-ivory' : 'text-charcoal'}`}>
-                  {link.name}
-                </span>
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
-              </button>
-            ))}
-            
-            <Button size="sm" onClick={() => scrollTo("#booking")}>
-              Reserve
-            </Button>
+          {/* Desktop Right Links */}
+          <div className="hidden lg:flex items-center gap-8 text-gold text-xs font-body tracking-[0.2em] font-medium z-10 w-[300px] justify-end">
+            <button onClick={() => scrollTo('#gallery')} className="hover:text-charcoal transition-colors uppercase">Gallery</button>
+            <button onClick={() => scrollTo('#testimonials')} className="hover:text-charcoal transition-colors uppercase">Reviews</button>
+            <button onClick={() => scrollTo('#contact')} className="hover:text-charcoal transition-colors uppercase">Contact</button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -114,6 +113,11 @@ export function Navbar() {
               }`}
             />
           </button>
+        </div>
+
+        {/* Torn Paper Bottom Edge */}
+        <div className={`absolute top-[99%] left-0 w-full transition-opacity duration-500 [&>div>svg]:!h-6 [&>div>svg]:md:!h-8 [&>div>svg]:lg:!h-10 ${isScrolled && !isOpen && !isHidden ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+          <TornPaper position="top" color="#FEFDF5" className="[&_svg]:!drop-shadow-sm" />
         </div>
       </motion.nav>
 
