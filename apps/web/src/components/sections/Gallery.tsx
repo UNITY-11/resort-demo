@@ -18,7 +18,7 @@ export function Gallery() {
     <section
       id="gallery"
       ref={ref}
-      className="relative pt-24 pb-40 md:pt-40 md:pb-64 bg-[url('/munnar.png')] bg-cover bg-center bg-fixed"
+      className="relative pt-24 pb-32 md:pt-40 md:pb-64 bg-[url('/munnar.png')] bg-cover bg-center bg-fixed"
       aria-label="Gallery"
     >
       {/* ─── Top Torn Paper Transition ─── */}
@@ -41,7 +41,7 @@ export function Gallery() {
         </div>
 
         {/* ─── Ladder Layout ─── */}
-        <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-start gap-8 md:gap-x-12 md:gap-y-24">
+        <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-start gap-24 md:gap-x-12 md:gap-y-32">
           {images.map((img, i) => {
             // Ladder (staggered) effect using only positive margins to prevent vertical overlapping
             const marginClass =
@@ -51,10 +51,10 @@ export function Gallery() {
             return (
               <motion.div
                 key={img.src}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.8, delay: (i % 3) * 0.1 }}
-                viewport={{ once: true, margin: "-10%" }}
+                viewport={{ once: true, margin: "-5%" }}
                 className={`w-full md:w-[45%] lg:w-[30%] xl:w-[28%] ${marginClass}`}
               >
                 <GalleryCard
