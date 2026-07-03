@@ -3,14 +3,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { TextReveal } from "../ui/TextReveal";
+import { StampMark } from "../ui/StampMark";
 import { SectionLabel } from "../ui/SectionLabel";
 import { TornPaper } from "../ui/TornPaper";
 import { resortData } from "@/data/resort-data";
-import { KeralaMandala } from "@/lib/decorative-svgs";
-import { FloatingElement } from "../ui/FloatingElement";
 import { IoBedOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { TbPool, TbRulerMeasure } from "react-icons/tb";
+import { VelocityMarquee } from "../ui/VelocityMarquee";
 
 export function LuxuryVillas() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,16 +34,26 @@ export function LuxuryVillas() {
 
       {/* ─── STICKY BACKGROUNDS ─── */}
       <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-white">
-        {/* Animated Botanical Elements in the background */}
-        <FloatingElement duration={20} distance={15} className="absolute -top-20 -left-20 opacity-15 text-gold">
-          <KeralaMandala className="w-[40rem] h-auto animate-[spin_60s_linear_infinite]" opacity={1} />
-        </FloatingElement>
-        <FloatingElement duration={25} distance={10} delay={2} className="absolute -bottom-40 -right-20 opacity-10 text-gold">
-          <KeralaMandala className="w-[50rem] h-auto animate-[spin_80s_linear_infinite_reverse]" opacity={1} />
-        </FloatingElement>
-        <FloatingElement duration={30} distance={20} delay={1} className="absolute top-1/4 left-1/3 opacity-5 text-gold">
-          <KeralaMandala className="w-[60rem] h-auto animate-[spin_120s_linear_infinite]" opacity={1} />
-        </FloatingElement>
+        {/* Scroll-animated Stamp Marks in the background */}
+        <motion.div 
+          className="absolute -top-10 -left-10"
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [0, 600]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, 180])
+          }}
+        >
+          <StampMark color="var(--color-gold)" opacity={0.3} className="scale-150" />
+        </motion.div>
+
+        <motion.div 
+          className="absolute top-20 -right-20"
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [0, -400]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, -180])
+          }}
+        >
+          <StampMark color="var(--color-forest)" opacity={0.15} className="scale-[2.5]" location="CHAPTER 03" date="VILLAS" />
+        </motion.div>
       </div>
 
       {/* ─── SCROLLING CARDS ─── */}
@@ -157,28 +167,45 @@ export function LuxuryVillas() {
         </div>
       </div>
 
-      {/* ─── MOUNTAIN IMAGE TRANSITION ─── */}
-      <div className="relative w-full h-[60vh] md:h-[100vh]">
-        <img
-          src="/mountain.png"
-          alt="Mountain Landscape"
-          className="w-full h-full object-cover"
-        />
+      {/* ─── VELOCITY MARQUEE & MOUNTAIN TRANSITION ─── */}
+      {/* We use a wrapper with its own scroll mapping for the parallax effect */}
+      <div className="relative w-full h-[80vh] md:h-[120vh] -mt-[10vh] overflow-hidden" style={{ zIndex: 0 }}>
+        
+        {/* The Marquee Layer (Scrolls down slower, going behind mountain) */}
+        <motion.div 
+          className="absolute -top-[5%] md:-top-[10%] w-full z-0"
+          style={{ 
+            y: useTransform(scrollYProgress, [0.8, 1], [0, 300]) 
+          }}
+        >
+          <VelocityMarquee baseVelocity={-0.2} className="text-gold font-heading text-[8rem] md:text-[15rem] leading-none uppercase tracking-tighter opacity-100">
+            Sanctuaries of Space & Light — 
+          </VelocityMarquee>
+        </motion.div>
 
-        {/* Content overlay on the image */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-6 text-center">
-          <h2 className="fluid-heading font-heading text-ivory drop-shadow-xl max-w-4xl leading-tight">
-            Where the Earth <br />
-            <span className="italic text-gold">Meets the Sky</span>
-          </h2>
-          <p className="mt-6 text-ivory/90 font-body text-lg md:text-xl max-w-2xl drop-shadow-md font-light">
-            Discover the untamed beauty of the High Ranges, where every morning is painted in mist and gold.
-          </p>
-        </div>
+        {/* The Mountain Image (Sits on top with z-10) */}
+        <div className="absolute bottom-0 w-full h-[60vh] md:h-[100vh] z-10 pointer-events-none">
+          <img
+            src="/mountain.png"
+            alt="Mountain Landscape"
+            className="w-full h-full object-cover object-top"
+          />
 
-        {/* Torn paper covering the straight bottom cut of the image, tearing upwards. Color matches Chapter 4 (ivory). */}
-        <div className="absolute bottom-0 left-0 w-full z-20">
-          <TornPaper position="bottom" color="var(--color-ivory)" />
+          {/* Content overlay on the image */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-6 text-center pt-32">
+            <h2 className="fluid-heading font-heading text-ivory drop-shadow-xl max-w-4xl leading-tight">
+              Where the Earth <br />
+              <span className="italic text-gold">Meets the Sky</span>
+            </h2>
+            <p className="mt-6 text-ivory/90 font-body text-lg md:text-xl max-w-2xl drop-shadow-md font-light">
+              Discover the untamed beauty of the High Ranges, where every morning is painted in mist and gold.
+            </p>
+          </div>
+
+          {/* Torn paper covering the straight bottom cut of the image, tearing upwards. Color matches Chapter 4 (ivory). */}
+          <div className="absolute bottom-0 left-0 w-full z-20">
+            <TornPaper position="bottom" color="var(--color-ivory)" />
+          </div>
         </div>
       </div>
     </section>
