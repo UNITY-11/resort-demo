@@ -34,7 +34,7 @@ export function TextReveal({
     }
   };
 
-  const letterVariant = {
+  const letterVariant: any = {
     hidden: { 
       opacity: 0,
       filter: "blur(12px)",
@@ -79,10 +79,11 @@ export function TextReveal({
     }
 
     if (isValidElement(node)) {
+      const element = node as React.ReactElement<any>;
       return cloneElement(
-        node as React.ReactElement<any>,
-        { ...node.props },
-        node.props.children ? Children.map(node.props.children, splitTextToLetters) : undefined
+        element,
+        { ...element.props },
+        element.props.children ? Children.map(element.props.children, splitTextToLetters) : undefined
       );
     }
 
