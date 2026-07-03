@@ -1,18 +1,25 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Button } from "../ui/Button";
 import { TextReveal } from "../ui/TextReveal";
 import { TornPaper } from "../ui/TornPaper";
-import { FogOverlay } from "../ui/FogOverlay";
+import { SectionLabel } from "../ui/SectionLabel";
 
 export function Hero() {
   const ref = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.65; // Slow down the video slightly
+    }
+  }, []);
 
   const textY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 200]);
@@ -27,18 +34,22 @@ export function Hero() {
       <motion.div
         style={{
           y: bgY,
-          backgroundImage: 'url("/banner.webp")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
         className="absolute inset-[-100px] z-0"
       >
+        <video 
+          ref={videoRef}
+          autoPlay 
+          loop
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         {/* Subtle gradient overlay to ensure text legibility but keep it vibrant */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20 pointer-events-none" />
       </motion.div>
-
-      {/* ─── Fog Overlay ─── */}
-      <FogOverlay />
 
       {/* ─── Top Navigation Overlay ─── */}
       <div className="absolute top-0 w-full px-8 py-6 z-30 flex justify-between items-center text-ivory/90 text-xs font-body tracking-wider uppercase">
@@ -64,6 +75,10 @@ export function Hero() {
         style={{ y: textY }}
         className="relative z-20 w-full px-6 flex flex-col items-center text-center mt-12"
       >
+        <TextReveal delay={0}>
+          <SectionLabel label="The Sanctuary" className="text-gold mb-4" align="center" />
+        </TextReveal>
+
         {/* Massive Script/Serif Title in Gold */}
         <TextReveal delay={0.1}>
           <h1
@@ -89,7 +104,7 @@ export function Hero() {
             variant="primary"
             size="lg"
             href="#booking"
-            className="rounded-full bg-gold hover:bg-gold-light text-charcoal border-none px-10 py-5 text-xs font-body uppercase tracking-wider font-semibold transition-transform hover:scale-105"
+            className="bg-gold hover:bg-gold-light text-charcoal border-none px-10 py-5 text-xs font-body uppercase tracking-wider font-semibold transition-transform hover:scale-105"
           >
             Reserve Your Stay
           </Button>
