@@ -42,7 +42,7 @@ export function Button({
   };
 
   const baseStyles =
-    "relative inline-flex items-center justify-center font-body tracking-[0.15em] uppercase overflow-hidden transition-all duration-500 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ivory";
+    "relative inline-flex items-center justify-center rounded-none font-body tracking-[0.15em] uppercase overflow-hidden transition-all duration-500 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ivory";
 
   const variants: Record<string, string> = {
     primary:
