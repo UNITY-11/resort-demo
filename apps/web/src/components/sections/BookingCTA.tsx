@@ -22,7 +22,7 @@ export function BookingCTA() {
     <section
       id="booking"
       ref={ref}
-      className="relative py-32 md:py-48 bg-ivory overflow-hidden"
+      className="relative py-16 md:py-48 bg-ivory overflow-hidden"
       aria-label="Booking"
     >
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
@@ -54,7 +54,8 @@ export function BookingCTA() {
           </div>
 
           {/* Right Side: Booking Form */}
-          <motion.div style={{ y: textY }} className="lg:col-span-6 relative z-20">
+          <div className="lg:col-span-6 relative z-20">
+            <motion.div style={{ y: textY, willChange: "transform" }} className="w-full">
             
             <div className="mb-12">
               <TextReveal>
@@ -127,7 +128,8 @@ export function BookingCTA() {
                 </form>
               </div>
             </TextReveal>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
