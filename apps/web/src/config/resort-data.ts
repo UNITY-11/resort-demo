@@ -1,4 +1,6 @@
-export const resortData = {
+import { ResortData } from "@/types";
+
+export const resortData: ResortData = {
   hero: {
     volume: "Volume 01",
     location: "IDUKKI, KERALA",
