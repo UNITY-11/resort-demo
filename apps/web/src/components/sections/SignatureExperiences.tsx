@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
@@ -11,20 +11,34 @@ import { TornPaper } from "../ui/TornPaper";
 export function SignatureExperiences() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
+  
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax motion values for a 3-column grid:
+  // Center column moves UP strongly, Side columns move DOWN
+  // Using raw scrollYProgress to lock movement directly to scroll (no physics lag)
+  const yParallaxCenter = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const yParallaxSide = useTransform(scrollYProgress, [0, 1], [0, 250]);
 
   const experiences = resortData.experiences;
 
   const collageItems = [
+    // Left column: starts highest
     { gridClass: "col-span-12 md:col-span-6 lg:col-span-4", delay: 0 },
-    { gridClass: "col-span-12 md:col-span-6 lg:col-span-4 md:mt-12 lg:mt-24", delay: 0.1 },
-    { gridClass: "col-span-12 md:col-span-6 lg:col-span-4", delay: 0.2 },
+    // Center column: pushed down the most
+    { gridClass: "col-span-12 md:col-span-6 lg:col-span-4 md:mt-12 lg:mt-40", delay: 0.1 },
+    // Right column: pushed down slightly
+    { gridClass: "col-span-12 md:col-span-6 lg:col-span-4 md:mt-6 lg:mt-16", delay: 0.2 },
   ];
 
   return (
     <section
       id="experiences"
       ref={ref}
-      className="relative py-24 overflow-hidden"
+      className="relative pt-24 pb-64 overflow-hidden"
       aria-label="Signature Experiences"
     >
       {/* Background SVG Track & Nature Elements (Visible on large screens) - Placed at section level to cover padding */}
@@ -104,7 +118,7 @@ export function SignatureExperiences() {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-          <SectionLabel label="Chapter 04 — Activities" className="text-gold" align="center" />
+          <SectionLabel label="Activities" className="text-gold" align="center" />
           <TextReveal className="mt-6" splitLetters={true}>
             <h2 className="fluid-heading font-heading text-charcoal max-w-2xl mx-auto text-shadow-sm">
               Immersive
@@ -121,9 +135,13 @@ export function SignatureExperiences() {
 
         {/* ─── Structured Grid ─── */}
         <div className="relative mt-12 md:mt-24">
-          <div className="grid grid-cols-12 gap-8 md:gap-12 auto-rows-auto relative z-10">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-24 md:gap-x-12 md:gap-y-32 auto-rows-auto relative z-10">
             {experiences.map((exp: any, i: number) => {
               const config = collageItems[i % collageItems.length];
+              
+              // 3-column grid: index 1, 4, 7... are the center column
+              const isCenter = i % 3 === 1;
+              const parallax = isCenter ? yParallaxCenter : yParallaxSide;
 
               return (
                 <motion.div
@@ -139,8 +157,11 @@ export function SignatureExperiences() {
                   }}
                   className={`group relative ${config.gridClass}`}
                 >
-                  {/* Outer container to reduce width/height */}
-                  <div className="relative group drop-shadow-[0_15px_20px_rgba(0,0,0,0.15)] transition-transform duration-700 hover:scale-[1.02] w-[85%] md:w-[90%] max-w-[340px] mx-auto">
+                  {/* Outer container to reduce width/height, wrapped with parallax motion */}
+                  <motion.div 
+                    style={{ y: parallax, willChange: "transform" }}
+                    className="relative group drop-shadow-[0_15px_20px_rgba(0,0,0,0.15)] transition-transform duration-700 hover:scale-[1.02] w-[85%] md:w-[90%] max-w-[340px] mx-auto"
+                  >
 
                     {/* The Image container with identical smooth torn CSS cutting on all four sides */}
                     <div className="relative w-full aspect-[4/5] overflow-hidden z-10 bg-[#e0dcd0] mask-rough-edge">
@@ -172,7 +193,7 @@ export function SignatureExperiences() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               );
             })}
