@@ -14,7 +14,7 @@ export function Testimonials() {
     return (
         <div id="testimonials" className="w-full flex justify-center bg-ivory">
             <section
-                className="relative w-full text-ivory py-24 lg:py-32 overflow-visible bg-forest"
+                className="relative w-full text-ivory py-16 md:py-24 lg:py-32 overflow-visible bg-forest"
             >
                 {/* ─── Top Torn Paper Border ─── */}
                 <TornPaper 
