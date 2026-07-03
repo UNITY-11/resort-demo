@@ -7,7 +7,12 @@ export function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
   useEffect(() => {
+    // Check if it's a touch device
+    setIsTouchDevice(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -34,6 +39,8 @@ export function CustomCursor() {
       window.removeEventListener("mouseover", handleMouseOver);
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <>
