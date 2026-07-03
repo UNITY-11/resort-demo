@@ -153,6 +153,20 @@ export const resortData = {
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
       rotation: 0,
     },
+    {
+      quote: "An unparalleled experience of serene luxury. The attention to detail in both architecture and service is simply extraordinary.",
+      author: "Isabella Rossi",
+      location: "Milan, Italy",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop",
+      rotation: 2,
+    },
+    {
+      quote: "Waking up to the mist rolling over the reservoir from our villa was magical. A true sanctuary for the soul.",
+      author: "David & Emma",
+      location: "Sydney, Australia",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop",
+      rotation: -2,
+    },
   ],
 
   booking: {
