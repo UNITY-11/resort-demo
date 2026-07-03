@@ -116,7 +116,7 @@ export function Navbar() {
         </div>
 
         {/* Torn Paper Bottom Edge */}
-        <div className={`absolute top-[99%] left-0 w-full transition-opacity duration-500 [&>div>svg]:!h-6 [&>div>svg]:md:!h-8 [&>div>svg]:lg:!h-10 ${isScrolled && !isOpen && !isHidden ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute top-[99%] left-0 w-full transition-opacity duration-500 [&>div>svg]:!h-6 [&>div>svg]:md:!h-8 [&>div>svg]:lg:!h-10 pointer-events-none ${isScrolled && !isOpen ? (isHidden ? 'opacity-100 lg:opacity-0' : 'opacity-100') : 'opacity-0'}`}>
           <TornPaper position="top" color="#FEFDF5" className="[&_svg]:!drop-shadow-sm" />
         </div>
       </motion.nav>
