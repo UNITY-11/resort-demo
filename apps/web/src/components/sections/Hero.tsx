@@ -27,7 +27,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[120vh] overflow-hidden"
+      className="relative min-h-[100vh] md:min-h-[120vh] overflow-hidden"
       aria-label="Hero"
     >
       {/* ─── Fullscreen Nature Background ─── */}
@@ -66,7 +66,7 @@ export function Hero() {
         {/* Massive Script/Serif Title in Gold */}
         <TextReveal delay={0.1}>
           <h1
-            className="font-heading italic text-gold text-[15vw] md:text-[12vw] leading-[0.8] tracking-tight drop-shadow-2xl mb-8"
+            className="font-heading italic text-gold text-7xl sm:text-[15vw] md:text-[12vw] leading-[0.8] tracking-tight drop-shadow-2xl mb-8"
             style={{ textShadow: '2px 4px 12px rgba(0,0,0,0.4)' }}
           >
             Élara Sanctuary
@@ -75,7 +75,7 @@ export function Hero() {
 
         {/* Small Center Text */}
         <TextReveal delay={0.3}>
-          <p className="text-ivory/90 text-[10px] md:text-xs tracking-[0.2em] font-body uppercase max-w-sm mx-auto mb-6 leading-relaxed text-shadow-sm">
+          <p className="text-ivory/90 text-xs sm:text-[10px] md:text-xs tracking-[0.2em] font-body uppercase max-w-sm mx-auto mb-6 leading-relaxed text-shadow-sm">
             Curated with love, assembled with warmth, delivered to your soul.
             <br />
             — With Care
