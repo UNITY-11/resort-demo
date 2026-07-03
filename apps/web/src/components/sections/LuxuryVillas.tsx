@@ -72,7 +72,7 @@ export function LuxuryVillas() {
             </TextReveal>
           </div>
 
-          <div className="flex flex-col gap-[30vh] md:gap-[50vh] pb-[20vh] max-w-7xl mx-auto">
+          <div className="flex flex-col gap-32 md:gap-56 pb-[20vh] max-w-7xl mx-auto items-center px-4">
             {villas.map((villa, i) => {
               return (
                 <motion.div
@@ -81,12 +81,11 @@ export function LuxuryVillas() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col lg:flex-row items-stretch mask-deckled shadow-2xl overflow-hidden bg-forest sticky"
-                  style={{ top: `calc(5vh + ${i * 30}px)`, zIndex: 10 + i }}
+                  className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-stretch gap-8 lg:gap-16 max-w-[1000px] w-full`}
                 >
                   {/* Image Column */}
-                  <div className="w-full lg:w-[55%] relative group perspective-1000 lg:order-1">
-                    <div className="w-full h-full overflow-hidden relative min-h-[30vh]">
+                  <div className="flex-1 w-full relative group mask-deckled shadow-2xl overflow-hidden bg-forest min-h-[250px] md:min-h-[350px]">
+                    <div className="w-full h-full absolute inset-0">
                       <img
                         src={villa.image}
                         alt={villa.name}
@@ -99,7 +98,7 @@ export function LuxuryVillas() {
 
                   {/* Text Column */}
                   <div 
-                    className="w-full lg:w-[55%] p-6 md:p-8 lg:p-10 flex flex-col justify-center relative bg-forest z-10 lg:order-2 lg:-ml-[10%] mask-ripped-left"
+                    className="flex-1 w-full p-6 md:p-8 flex flex-col justify-center relative bg-forest z-10 mask-deckled shadow-2xl overflow-hidden"
                   >
                     <div className="flex items-center gap-3 mb-4 relative z-10">
                       <span className="font-heading text-3xl md:text-4xl text-gold/80 leading-none mr-2">
@@ -178,7 +177,7 @@ export function LuxuryVillas() {
             y: useTransform(scrollYProgress, [0.8, 1], [0, 300]) 
           }}
         >
-          <VelocityMarquee baseVelocity={-0.2} className="text-gold font-heading text-[8rem] md:text-[15rem] leading-none uppercase tracking-tighter opacity-100">
+          <VelocityMarquee baseVelocity={-0.2} className="text-gold/30 font-heading text-[8rem] md:text-[15rem] leading-none uppercase tracking-tighter opacity-100">
             Sanctuaries of Space & Light — 
           </VelocityMarquee>
         </motion.div>
