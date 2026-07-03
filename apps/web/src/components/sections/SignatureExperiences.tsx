@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
 import Image from "next/image";
-import { resortData } from "@/data/resort-data";
+import { resortData } from "@/config/resort-data";
 import { TornPaper } from "../ui/TornPaper";
 
 // Simple animated flapping bird component
@@ -80,36 +80,40 @@ export function SignatureExperiences() {
         <Cloud x={20} y={320} scale={0.7} />
         <Cloud x={920} y={220} scale={1.4} />
 
-        {/* Flying Birds Flock 1 (Fast & Low) */}
-        <g fill="currentColor">
-          <animateTransform attributeName="transform" type="translate" from="1100 200" to="-200 200" dur="20s" repeatCount="indefinite" />
-          <FlappingBird x={0} y={0} scale={1.5} speed={0.8} delay={0} />
-          <FlappingBird x={30} y={-10} scale={1.3} speed={0.9} delay={0.2} />
-          <FlappingBird x={15} y={15} scale={1.4} speed={0.85} delay={0.4} />
-          <FlappingBird x={50} y={5} scale={1.2} speed={0.95} delay={0.1} />
-          <FlappingBird x={40} y={25} scale={1.3} speed={0.8} delay={0.6} />
-          <FlappingBird x={70} y={-5} scale={1.1} speed={1.0} delay={0.3} />
+        {/* Flying Birds - Group A */}
+        <g fill="currentColor" style={{ willChange: "transform" }}>
+          <animateTransform attributeName="transform" type="translate" from="1000 200" to="-300 200" dur="25s" repeatCount="indefinite" />
+          <FlappingBird x={0} y={0} scale={1.2} speed={0.9} delay={0} />
+          <FlappingBird x={30} y={-15} scale={1.1} speed={1.0} delay={0.2} />
+          <FlappingBird x={15} y={20} scale={1.3} speed={0.85} delay={0.4} />
         </g>
         
-        {/* Flying Birds Flock 2 (Slower, higher up) */}
-        <g fill="currentColor">
-          <animateTransform attributeName="transform" type="translate" from="1200 100" to="-300 100" dur="35s" repeatCount="indefinite" />
-          <g opacity="0.6">
-            <FlappingBird x={0} y={0} scale={1.2} speed={1.2} delay={0} />
-            <FlappingBird x={25} y={-15} scale={1.1} speed={1.3} delay={0.3} />
-            <FlappingBird x={10} y={15} scale={1.0} speed={1.1} delay={0.1} />
-            <FlappingBird x={40} y={5} scale={1.1} speed={1.25} delay={0.4} />
-            <FlappingBird x={50} y={-10} scale={0.9} speed={1.4} delay={0.2} />
+        {/* Flying Birds - Group B */}
+        <g fill="currentColor" style={{ willChange: "transform" }}>
+          <animateTransform attributeName="transform" type="translate" from="1400 120" to="-300 120" dur="35s" repeatCount="indefinite" />
+          <g opacity="0.7">
+            <FlappingBird x={0} y={0} scale={0.9} speed={1.2} delay={0} />
+            <FlappingBird x={25} y={-10} scale={0.85} speed={1.3} delay={0.3} />
+            <FlappingBird x={10} y={15} scale={0.95} speed={1.1} delay={0.1} />
+            <FlappingBird x={40} y={5} scale={0.8} speed={1.25} delay={0.4} />
           </g>
         </g>
 
-        {/* Flying Birds Flock 3 (Distant, Very Slow) */}
-        <g fill="currentColor">
-          <animateTransform attributeName="transform" type="translate" from="1300 150" to="-200 150" dur="50s" repeatCount="indefinite" />
-          <g opacity="0.4">
-            <FlappingBird x={0} y={0} scale={0.7} speed={1.5} delay={0} />
-            <FlappingBird x={20} y={-10} scale={0.6} speed={1.6} delay={0.5} />
-            <FlappingBird x={15} y={10} scale={0.7} speed={1.4} delay={0.2} />
+        {/* Flying Birds - Group C */}
+        <g fill="currentColor" style={{ willChange: "transform" }}>
+          <animateTransform attributeName="transform" type="translate" from="1200 180" to="-300 180" dur="45s" repeatCount="indefinite" />
+          <g opacity="0.5">
+            <FlappingBird x={0} y={0} scale={0.7} speed={1.4} delay={0.5} />
+            <FlappingBird x={20} y={-10} scale={0.65} speed={1.5} delay={0.7} />
+          </g>
+        </g>
+
+        {/* Flying Birds - Group D */}
+        <g fill="currentColor" style={{ willChange: "transform" }}>
+          <animateTransform attributeName="transform" type="translate" from="1700 80" to="-300 80" dur="30s" repeatCount="indefinite" />
+          <g opacity="0.6">
+            <FlappingBird x={0} y={0} scale={1.0} speed={1.1} delay={0.2} />
+            <FlappingBird x={35} y={10} scale={1.1} speed={1.0} delay={0.4} />
           </g>
         </g>
       </g>
@@ -229,7 +233,7 @@ export function SignatureExperiences() {
                   {/* Outer container to reduce width/height, wrapped with parallax motion */}
                   <motion.div 
                     style={isDesktop ? { y: parallax, willChange: "transform" } : {}}
-                    className="relative group drop-shadow-[0_15px_20px_rgba(0,0,0,0.15)] transition-transform duration-700 hover:scale-[1.02] w-[85%] md:w-[90%] max-w-[340px] mx-auto"
+                    className="relative group shadow-2xl transition-transform duration-500 hover:scale-[1.02] w-[85%] md:w-[90%] max-w-[340px] mx-auto will-change-transform"
                   >
 
                     {/* The Image container with identical smooth torn CSS cutting on all four sides */}
@@ -238,9 +242,12 @@ export function SignatureExperiences() {
                         src={exp.image}
                         alt={exp.title}
                         fill
-                        className="object-cover transition-all duration-[1.5s] group-hover:scale-110 filter grayscale group-hover:grayscale-0 contrast-[1.1]"
+                        className="object-cover transition-transform duration-[1.5s] group-hover:scale-110 will-change-transform"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
+
+                      {/* Performance-friendly Grayscale Overlay */}
+                      <div className="absolute inset-0 bg-stone-500 mix-blend-color opacity-80 group-hover:opacity-0 transition-opacity duration-700 z-10 pointer-events-none" />
 
                       {/* Gradients for vignette and text legibility */}
                       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.5)_100%)] z-10 pointer-events-none" />
