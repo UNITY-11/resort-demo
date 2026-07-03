@@ -1,10 +1,16 @@
 import { Hero } from "@/components/sections/Hero";
-import { ResortStory } from "@/components/sections/ResortStory";
-import { LuxuryVillas } from "@/components/sections/LuxuryVillas";
-import { BookingCTA } from "@/components/sections/BookingCTA";
 import dynamic from "next/dynamic";
 
-// Dynamically import heavy sections that appear below the fold
+const ResortStory = dynamic(
+  () => import("@/components/sections/ResortStory").then((mod) => mod.ResortStory),
+  { ssr: true }
+);
+
+const LuxuryVillas = dynamic(
+  () => import("@/components/sections/LuxuryVillas").then((mod) => mod.LuxuryVillas),
+  { ssr: true }
+);
+
 const SignatureExperiences = dynamic(
   () => import("@/components/sections/SignatureExperiences").then((mod) => mod.SignatureExperiences),
   { ssr: true }
@@ -17,6 +23,11 @@ const Gallery = dynamic(
 
 const Testimonials = dynamic(
   () => import("@/components/sections/Testimonials").then((mod) => mod.Testimonials),
+  { ssr: true }
+);
+
+const BookingCTA = dynamic(
+  () => import("@/components/sections/BookingCTA").then((mod) => mod.BookingCTA),
   { ssr: true }
 );
 
