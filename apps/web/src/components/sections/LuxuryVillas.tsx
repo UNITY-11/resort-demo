@@ -190,7 +190,7 @@ export function LuxuryVillas() {
           }}
         >
           <VelocityMarquee baseVelocity={-0.2} className="text-gold/30 font-heading text-7xl sm:text-[8rem] md:text-[15rem] leading-none uppercase tracking-tighter opacity-100 whitespace-nowrap">
-            Sanctuaries of Space & Light — 
+            Sanctuaries of Space & Light&nbsp;&nbsp;&nbsp;&nbsp;
           </VelocityMarquee>
         </motion.div>
 
