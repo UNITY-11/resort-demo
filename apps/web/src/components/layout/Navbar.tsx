@@ -129,9 +129,9 @@ export function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[55] bg-forest paper-texture flex flex-col justify-center px-6"
+            className="fixed inset-0 z-[55] bg-[#FEFDF5] paper-texture flex flex-col justify-center px-6"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 pointer-events-none" />
             
             <div className="flex flex-col gap-6 items-center text-center relative z-10">
               {navLinks.map((link, i) => (
@@ -141,7 +141,7 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
                   onClick={() => scrollTo(link.href)}
-                  className="font-heading text-3xl sm:text-4xl md:text-5xl text-ivory italic hover:text-gold transition-colors duration-300"
+                  className="font-heading text-3xl sm:text-4xl md:text-5xl text-charcoal italic hover:text-gold transition-colors duration-300"
                 >
                   {link.name}
                 </motion.button>
@@ -160,7 +160,7 @@ export function Navbar() {
             </div>
             
             {/* Decorative element */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-ivory/10 pointer-events-none">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-charcoal/10 pointer-events-none">
               <span className="font-heading italic text-5xl md:text-6xl">É</span>
             </div>
           </motion.div>
