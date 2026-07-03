@@ -24,7 +24,7 @@ export function ResortStory() {
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           
           <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-            <SectionLabel label="Chapter 02 — Our Philosophy" className="text-gold" align="center" />
+            <SectionLabel label="Our Philosophy" className="text-gold" align="center" />
           </div>
 
           {/* ─── Editorial Split Layout ─── */}
@@ -41,7 +41,7 @@ export function ResortStory() {
                 className="bg-ivory/80 backdrop-blur-sm p-8 md:p-12 shadow-2xl border border-ivory/40"
               >
                 <TextReveal splitLetters={true}>
-                  <h2 className="fluid-heading font-heading text-charcoal mb-10 leading-[1.1] text-center text-shadow-sm">
+                  <h2 className="text-4xl md:text-5xl font-heading text-charcoal mb-8 leading-[1.1] text-center text-shadow-sm">
                     Sculpted into the
                     <br />
                     <span className="italic text-gold">Western Ghats</span>
@@ -50,16 +50,16 @@ export function ResortStory() {
 
                 {/* Pull Quote */}
                 <TextReveal delay={0.15}>
-                  <blockquote className="relative mb-10">
-                    <span className="absolute -top-4 -left-6 text-6xl text-gold/20 font-heading leading-none select-none">"</span>
-                    <p className="font-heading italic text-2xl md:text-3xl lg:text-4xl text-forest/90 leading-snug">
+                  <blockquote className="relative mb-8">
+                    <span className="absolute -top-4 -left-6 text-5xl text-gold/20 font-heading leading-none select-none">"</span>
+                    <p className="font-heading italic text-xl md:text-2xl lg:text-3xl text-forest/90 leading-snug">
                       {story.quote}
                     </p>
                   </blockquote>
                 </TextReveal>
 
                 <TextReveal delay={0.25}>
-                  <p className="text-stone text-base md:text-lg leading-relaxed mb-10 font-body font-light">
+                  <p className="text-stone text-sm md:text-base leading-relaxed mb-8 font-body font-light">
                     {story.body}
                   </p>
                 </TextReveal>
@@ -89,7 +89,7 @@ export function ResortStory() {
                 width={800}
                 height={1000}
                 maskIndex={5} // SLEEK_ANGLE_BOTTOM
-                containerClassName="w-full h-[500px] md:h-[750px] ml-0 lg:ml-[-10%]"
+                containerClassName="w-full h-[400px] md:h-[600px] ml-0 lg:ml-[-10%]"
                 parallaxSpeed={0.1}
                 hasShadow={true}
                 hasTape={false}
@@ -100,19 +100,19 @@ export function ResortStory() {
               <FloatingElement
                 duration={8}
                 distance={15}
-                className="absolute -bottom-12 -left-4 md:-left-16 z-20 hidden md:block"
+                className="absolute -bottom-8 -left-4 md:-left-12 z-20 hidden md:block"
               >
                 <div 
-                  className="bg-ivory p-6 pb-12 w-72 shadow-2xl border border-gold/10"
+                  className="bg-ivory p-5 pb-10 w-56 md:w-64 shadow-2xl border border-gold/10"
                 >
                   <div className="relative aspect-square overflow-hidden rounded-sm">
                     <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kerala_Backwaters.jpg/1280px-Kerala_Backwaters.jpg" 
+                      src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=2070&auto=format&fit=crop" 
                       alt="Resort detail"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="font-heading text-charcoal text-lg mt-6 text-center">
+                  <p className="font-heading text-charcoal text-base md:text-lg mt-5 text-center leading-tight">
                     Where nature meets refinement
                   </p>
                 </div>
