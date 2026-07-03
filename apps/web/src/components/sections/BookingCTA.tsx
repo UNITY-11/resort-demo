@@ -34,19 +34,21 @@ export function BookingCTA() {
             {/* Background Texture Element */}
             <div className="absolute inset-0 bg-sand watercolor-wash organic-corners-lg transform -rotate-2 opacity-50" style={{ clipPath: 'polygon(2% 0, 100% 4%, 96% 100%, 0 98%)' }} />
             
-            <OrganicImage
-              src="https://images.unsplash.com/photo-1582610116397-edb318620f90?q=80&w=2070&auto=format&fit=crop"
-              alt="Natural luxury resort"
-              width={800}
-              height={1000}
-              maskIndex={2} // HAND_CUT
-              containerClassName="absolute inset-4 z-10"
-              parallaxSpeed={0.1}
-              hasShadow={true}
-              hasTape={true}
-              tapePosition="top-left"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            <div className="absolute inset-0 md:inset-4 z-10">
+              <OrganicImage
+                src="https://images.unsplash.com/photo-1582610116397-edb318620f90?q=80&w=2070&auto=format&fit=crop"
+                alt="Natural luxury resort"
+                width={800}
+                height={1000}
+                maskIndex={2} // HAND_CUT
+                containerClassName="w-full h-full"
+                parallaxSpeed={0.1}
+                hasShadow={true}
+                hasTape={true}
+                tapePosition="top-left"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
 
             <div className="absolute -left-12 bottom-1/4 z-0 text-forest opacity-20 hidden md:block">
               <BotanicalSketch1 className="w-64 h-96 transform -rotate-12" />
