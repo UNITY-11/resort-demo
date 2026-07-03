@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, forwardRef, useImperativeHandle, useEffect } from "react";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
-import { resortData } from "@/data/resort-data";
+import { resortData } from "@/config/resort-data";
 
 // Helper to calculate the relative offset for infinite wrapping
 const getOffset = (idx: number, currentIndex: number, total: number) => {
