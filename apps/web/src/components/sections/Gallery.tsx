@@ -27,7 +27,7 @@ export function Gallery() {
       <div className="relative z-30 max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-32">
-          <SectionLabel label="Chapter 05 — Gallery" align="center" className="text-gold" />
+          <SectionLabel label="Gallery" align="center" className="text-gold" />
           <TextReveal className="mt-8" splitLetters={true}>
             <h2 className="fluid-heading font-heading text-ivory drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>
               A Visual <span className="italic text-gold">Masterpiece</span>
