@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { TextReveal } from "../ui/TextReveal";
-import { StampMark } from "../ui/StampMark";
+import { KathakaliHalo } from "@/lib/decorative-svgs";
+import { AnimatedKathakaliHead } from "../ui/AnimatedKathakaliHead";
 import { SectionLabel } from "../ui/SectionLabel";
 import { TornPaper } from "../ui/TornPaper";
 import { resortData } from "@/data/resort-data";
@@ -25,7 +26,7 @@ export function LuxuryVillas() {
     <section
       id="villas"
       ref={containerRef}
-      className="relative w-full bg-white"
+      className="relative w-full bg-white overflow-visible"
       aria-label="Luxury Villas"
     >
       <div className="absolute top-0 left-0 w-full z-20">
@@ -34,25 +35,35 @@ export function LuxuryVillas() {
 
       {/* ─── STICKY BACKGROUNDS ─── */}
       <div className="sticky top-0 w-full h-screen overflow-hidden z-0 bg-white">
-        {/* Scroll-animated Stamp Marks in the background */}
-        <motion.div 
-          className="absolute -top-10 -left-10"
-          style={{ 
-            y: useTransform(scrollYProgress, [0, 1], [0, 600]),
-            rotate: useTransform(scrollYProgress, [0, 1], [0, 180])
-          }}
-        >
-          <StampMark color="var(--color-gold)" opacity={0.3} className="scale-150" />
-        </motion.div>
+        <motion.div style={{ opacity: useTransform(scrollYProgress, [0.7, 0.85], [1, 0]) }}>
+        <div className="absolute top-1/2 left-4 -translate-y-1/2 text-gold">
+          <div className="relative w-[360px] h-[360px]">
+            <motion.div
+              className="absolute top-0 left-0"
+              style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 180]) }}
+            >
+              <KathakaliHalo opacity={0.12} className="w-[300px] h-[300px]" />
+            </motion.div>
+            <div className="absolute top-[10px] left-0">
+              <AnimatedKathakaliHead opacity={0.12} className="w-[300px] h-[430px]" scrollProgress={scrollYProgress} />
+            </div>
+          </div>
+        </div>
 
-        <motion.div 
-          className="absolute top-20 -right-20"
-          style={{ 
-            y: useTransform(scrollYProgress, [0, 1], [0, -400]),
-            rotate: useTransform(scrollYProgress, [0, 1], [0, -180])
-          }}
-        >
-          <StampMark color="var(--color-forest)" opacity={0.15} className="scale-[2.5]" location="CHAPTER 03" date="VILLAS" />
+        {/* Kathakali #2 — right side, stays centered */}
+        <div className="absolute top-1/2 right-4 -translate-y-1/2 text-forest">
+          <div className="relative w-[360px] h-[360px]">
+            <motion.div
+              className="absolute top-0 left-0"
+              style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, -180]) }}
+            >
+              <KathakaliHalo opacity={0.06} className="w-[300px] h-[300px]" />
+            </motion.div>
+            <div className="absolute top-[10px] left-0">
+              <AnimatedKathakaliHead opacity={0.06} className="w-[300px] h-[430px]" scrollProgress={scrollYProgress} expressionShift={2} />
+            </div>
+          </div>
+        </div>
         </motion.div>
       </div>
 
@@ -168,7 +179,7 @@ export function LuxuryVillas() {
 
       {/* ─── VELOCITY MARQUEE & MOUNTAIN TRANSITION ─── */}
       {/* We use a wrapper with its own scroll mapping for the parallax effect */}
-      <div className="relative w-full h-[80vh] md:h-[120vh] -mt-[10vh] overflow-hidden" style={{ zIndex: 0 }}>
+      <div className="relative w-full h-[80vh] md:h-[120vh] -mt-[10vh] overflow-visible" style={{ zIndex: 0 }}>
         
         {/* The Marquee Layer (Scrolls down slower, going behind mountain) */}
         <motion.div 
