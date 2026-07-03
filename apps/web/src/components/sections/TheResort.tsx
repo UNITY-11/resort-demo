@@ -23,7 +23,7 @@ export function TheResort() {
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           {/* ─── Centered Heading Section ─── */}
           <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-            <SectionLabel label="Chapter 05 — The Grounds" className="text-gold" align="center" />
+            <SectionLabel label="The Grounds" className="text-gold" align="center" />
             
             <TextReveal className="mt-8" splitLetters={true}>
               <h2 className="fluid-heading font-heading text-charcoal leading-[1.1] max-w-4xl mx-auto text-shadow-sm">
