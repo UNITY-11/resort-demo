@@ -6,7 +6,7 @@ import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
 import { GalleryCard } from "../ui/GalleryCard";
 import { TornPaper } from "../ui/TornPaper";
-import { resortData } from "@/data/resort-data";
+import { resortData } from "@/config/resort-data";
 
 export function Gallery() {
   const ref = useRef(null);
