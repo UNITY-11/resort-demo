@@ -20,7 +20,7 @@ export function ResortStory() {
     >
 
 
-      <div className="py-24 md:py-40">
+      <div className="py-16 md:py-40">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           
           <div className="flex flex-col items-center text-center mb-16 md:mb-24">
@@ -36,12 +36,12 @@ export function ResortStory() {
             </div>
 
             {/* Text Column (Rotated slightly) */}
-            <div className="lg:col-span-6 lg:col-start-1 relative z-10 lg:pr-12">
+            <div className="order-2 lg:order-1 lg:col-span-6 lg:col-start-1 relative z-10 lg:pr-12">
               <div 
-                className="bg-ivory/80 backdrop-blur-sm p-8 md:p-12 shadow-2xl border border-ivory/40"
+                className="bg-ivory/80 backdrop-blur-sm p-6 sm:p-8 md:p-12 shadow-2xl border border-ivory/40"
               >
                 <TextReveal splitLetters={true}>
-                  <h2 className="text-4xl md:text-5xl font-heading text-charcoal mb-8 leading-[1.1] text-center text-shadow-sm">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading text-charcoal mb-6 md:mb-8 leading-[1.1] text-center text-shadow-sm">
                     Sculpted into the
                     <br />
                     <span className="italic text-gold">Western Ghats</span>
@@ -50,9 +50,9 @@ export function ResortStory() {
 
                 {/* Pull Quote */}
                 <TextReveal delay={0.15}>
-                  <blockquote className="relative mb-8">
-                    <span className="absolute -top-4 -left-6 text-5xl text-gold/20 font-heading leading-none select-none">"</span>
-                    <p className="font-heading italic text-xl md:text-2xl lg:text-3xl text-forest/90 leading-snug">
+                  <blockquote className="relative mb-6 md:mb-8">
+                    <span className="absolute -top-4 -left-4 md:-left-6 text-4xl md:text-5xl text-gold/20 font-heading leading-none select-none">"</span>
+                    <p className="font-heading italic text-base sm:text-lg md:text-2xl lg:text-3xl text-forest/90 leading-snug">
                       {story.quote}
                     </p>
                   </blockquote>
@@ -81,7 +81,7 @@ export function ResortStory() {
             </div>
 
             {/* Image Column */}
-            <div className="lg:col-span-6 lg:col-start-7 relative z-10 mt-12 lg:mt-0">
+            <div className="order-1 lg:order-2 lg:col-span-6 lg:col-start-7 relative z-10 lg:mt-0">
               {/* Main Image with Ripped Left Mask */}
               <OrganicImage
                 src={story.image}
@@ -89,7 +89,7 @@ export function ResortStory() {
                 width={800}
                 height={1000}
                 maskIndex={5} // SLEEK_ANGLE_BOTTOM
-                containerClassName="w-full h-[400px] md:h-[600px] ml-0 lg:ml-[-10%]"
+                containerClassName="w-full h-[350px] sm:h-[400px] md:h-[600px] ml-0 lg:ml-[-10%]"
                 parallaxSpeed={0.1}
                 hasShadow={true}
                 hasTape={false}
@@ -100,10 +100,10 @@ export function ResortStory() {
               <FloatingElement
                 duration={8}
                 distance={15}
-                className="absolute -bottom-8 -left-4 md:-left-12 z-20 hidden md:block"
+                className="absolute -bottom-4 md:-bottom-8 left-2 md:-left-12 z-20 block"
               >
                 <div 
-                  className="bg-ivory p-5 pb-10 w-56 md:w-64 shadow-2xl border border-gold/10"
+                  className="bg-ivory p-3 sm:p-4 md:p-5 pb-6 sm:pb-8 md:pb-10 w-40 sm:w-48 md:w-64 shadow-2xl border border-gold/10"
                 >
                   <div className="relative aspect-square overflow-hidden rounded-sm">
                     <img 
@@ -112,7 +112,7 @@ export function ResortStory() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="font-heading text-charcoal text-base md:text-lg mt-5 text-center leading-tight">
+                  <p className="font-heading text-charcoal text-xs sm:text-sm md:text-lg mt-3 sm:mt-4 md:mt-5 text-center leading-tight">
                     Where nature meets refinement
                   </p>
                 </div>
