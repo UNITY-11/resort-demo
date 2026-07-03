@@ -30,21 +30,22 @@ export function BookingCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Left Side: Emotional Imagery */}
-          <div className="lg:col-span-7 relative h-[50vh] md:h-[80vh] min-h-[500px]">
+          <div className="lg:col-span-6 relative h-[40vh] md:h-[60vh] min-h-[400px]">
             {/* Background Texture Element */}
             <div className="absolute inset-0 bg-sand watercolor-wash organic-corners-lg transform -rotate-2 opacity-50" style={{ clipPath: 'polygon(2% 0, 100% 4%, 96% 100%, 0 98%)' }} />
             
             <OrganicImage
-              src={booking.image}
-              alt="Luxury resort exterior"
-              fill
+              src="https://images.unsplash.com/photo-1582610116397-edb318620f90?q=80&w=2070&auto=format&fit=crop"
+              alt="Natural luxury resort"
+              width={800}
+              height={1000}
               maskIndex={2} // HAND_CUT
               containerClassName="absolute inset-4 z-10"
               parallaxSpeed={0.1}
               hasShadow={true}
               hasTape={true}
               tapePosition="top-left"
-              sizes="(max-width: 1024px) 100vw, 60vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
 
             <div className="absolute -left-12 bottom-1/4 z-0 text-forest opacity-20 hidden md:block">
@@ -53,7 +54,7 @@ export function BookingCTA() {
           </div>
 
           {/* Right Side: Booking Form */}
-          <motion.div style={{ y: textY }} className="lg:col-span-5 relative z-20">
+          <motion.div style={{ y: textY }} className="lg:col-span-6 relative z-20">
             
             <div className="mb-12">
               <TextReveal>
@@ -119,7 +120,7 @@ export function BookingCTA() {
                   </div>
 
                   <div className="pt-4 flex justify-center">
-                    <Button variant="primary" size="lg" className="w-full rounded-full !bg-forest hover:!bg-forest-light border-none text-ivory">
+                    <Button variant="primary" size="lg" className="w-full !bg-forest hover:!bg-forest-light border-none text-ivory">
                       Begin Journey
                     </Button>
                   </div>
