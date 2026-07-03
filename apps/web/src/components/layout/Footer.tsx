@@ -46,8 +46,6 @@ export function Footer() {
         
         {/* Top Centered Section */}
         <div className="flex flex-col items-center text-center mb-24">
-          <HeadingFlourish className="w-32 h-8 mb-4 transform scale-x-[-1]" />
-          
           <h2 className="font-heading text-xl md:text-3xl lg:text-4xl tracking-widest uppercase mb-10 leading-relaxed max-w-5xl text-ivory">
             South India's Jewel ,<br/>
             The Majestic Premium Luxury Five Star Resort in Munnar
@@ -64,7 +62,7 @@ export function Footer() {
           {/* VISIT US */}
           <div className="md:col-span-3">
             <h3 className="font-heading text-base md:text-lg font-semibold uppercase tracking-widest mb-6 flex items-center gap-2">
-              Visit Us <Flourish />
+              Visit Us
             </h3>
             <div className="text-sm leading-loose opacity-80">
               <p>A Unit of GF Hotels and Resorts Pvt Ltd</p>
@@ -77,7 +75,7 @@ export function Footer() {
           {/* QUICK LINKS */}
           <div className="md:col-span-6 lg:ml-12">
             <h3 className="font-heading text-base md:text-lg font-semibold uppercase tracking-widest mb-6 flex items-center gap-2">
-              Quick Links <Flourish />
+              Quick Links
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-4 text-sm opacity-80">
               <div className="flex flex-col space-y-4">
@@ -107,9 +105,9 @@ export function Footer() {
           {/* CONTACT INFO */}
           <div className="md:col-span-3 flex flex-col justify-end pb-8">
             <div className="space-y-6 text-sm opacity-80">
-              <a href="tel:+919249097342" className="flex items-center gap-4 hover:text-gold transition-colors group">
+              <a href="tel:+919846200211" className="flex items-center gap-4 hover:text-gold transition-colors group">
                 <FaPhone className="text-[#8b6508] text-lg group-hover:scale-110 transition-transform" />
-                +91 9249097342
+                +91 9846200211
               </a>
               <a href="mailto:reservations@thegrandcliff.com" className="flex items-center gap-4 hover:text-gold transition-colors group">
                 <FaEnvelope className="text-[#8b6508] text-lg group-hover:scale-110 transition-transform" />
