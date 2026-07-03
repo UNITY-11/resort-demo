@@ -7,7 +7,7 @@ import { OrganicImage } from "../ui/OrganicImage";
 import { BotanicalSketch2 } from "@/lib/decorative-svgs";
 import { FloatingElement } from "../ui/FloatingElement";
 import { EditorialDivider } from "../ui/EditorialDivider";
-import { resortData } from "@/data/resort-data";
+import { resortData } from "@/config/resort-data";
 
 export function ResortStory() {
   const { story } = resortData;
