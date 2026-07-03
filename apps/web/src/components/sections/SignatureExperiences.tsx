@@ -152,11 +152,11 @@ export function SignatureExperiences() {
     <section
       id="experiences"
       ref={ref}
-      className="relative pt-24 pb-32 md:pb-64 overflow-hidden"
+      className="relative pt-24 pb-32 md:pb-64 overflow-clip"
       aria-label="Signature Experiences"
     >
       {/* Background SVG Track & Nature Elements - Placed at section level to cover padding */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-50 md:opacity-60">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-clip opacity-50 md:opacity-60">
         
         {/* Desktop SVG - Pinned to bottom to maintain mountains */}
         <svg
@@ -214,8 +214,8 @@ export function SignatureExperiences() {
               return (
                 <motion.div
                   key={exp.title}
-                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  initial={{ opacity: 0, y: 50, scale: 0.95, filter: isDesktop ? "blur(0px)" : "blur(12px)" }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
                   viewport={{ once: true, margin: "-5%" }}
                   transition={{
                     duration: 0.8,
