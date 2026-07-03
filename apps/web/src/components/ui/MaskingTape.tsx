@@ -7,6 +7,7 @@ interface MaskingTapeProps {
   width?: string;
   className?: string;
   opacity?: number;
+  position?: "top" | "bottom" | "top-left" | "top-right";
 }
 
 export function MaskingTape({
@@ -14,10 +15,18 @@ export function MaskingTape({
   width = "w-20",
   className = "",
   opacity = 0.85,
+  position = "top",
 }: MaskingTapeProps) {
+  const positionClasses = {
+    "top": "absolute top-[-10px] left-1/2 -translate-x-1/2",
+    "bottom": "absolute bottom-[-10px] left-1/2 -translate-x-1/2",
+    "top-left": "absolute top-[-10px] left-[-20px]",
+    "top-right": "absolute top-[-10px] right-[-20px]",
+  };
+
   return (
     <div
-      className={`h-7 backdrop-blur-sm shadow-[0_1px_3px_rgba(0,0,0,0.1)] ${width} ${className}`}
+      className={`h-7 backdrop-blur-sm shadow-[0_1px_3px_rgba(0,0,0,0.1)] z-20 ${positionClasses[position]} ${width} ${className}`}
       style={{
         transform: `rotate(${rotation}deg)`,
         opacity,
