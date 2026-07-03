@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-ivory text-charcoal antialiased cursor-none">
+      <body className="bg-ivory text-charcoal antialiased cursor-none" suppressHydrationWarning>
         <CustomCursor />
         <SmoothScrollProvider>
           <GrainOverlay />
