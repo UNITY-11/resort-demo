@@ -27,7 +27,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[120vh] overflow-hidden flex flex-col items-center justify-center"
+      className="relative min-h-[120vh] overflow-hidden"
       aria-label="Hero"
     >
       {/* ─── Fullscreen Nature Background ─── */}
@@ -51,30 +51,14 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20 pointer-events-none" />
       </motion.div>
 
-      {/* ─── Top Navigation Overlay ─── */}
-      <div className="absolute top-0 w-full px-8 py-6 z-30 flex justify-between items-center text-ivory/90 text-xs font-body tracking-wider uppercase">
-        <div className="flex gap-8">
-          <a href="#about" className="hover:text-gold transition-colors">About</a>
-          <a href="#villas" className="hover:text-gold transition-colors">Accommodations</a>
-          <a href="#experiences" className="hover:text-gold transition-colors">Experiences</a>
-        </div>
 
-        <div className="font-heading text-xl italic text-gold hidden md:block">
-          ~ Élara Sanctuary ~
-        </div>
-
-        <div className="flex gap-8">
-          <a href="#resort" className="hover:text-gold transition-colors">The Grounds</a>
-          <a href="#journal" className="hover:text-gold transition-colors">Journal</a>
-          <a href="#contact" className="hover:text-gold transition-colors">Contact</a>
-        </div>
-      </div>
 
       {/* ─── Main Composition ─── */}
-      <motion.div
-        style={{ y: textY }}
-        className="relative z-20 w-full px-6 flex flex-col items-center text-center mt-12"
-      >
+      <div className="h-[100vh] w-full flex flex-col items-center justify-center relative z-20">
+        <motion.div
+          style={{ y: textY }}
+          className="w-full px-6 flex flex-col items-center text-center mt-12"
+        >
         <TextReveal delay={0}>
           <SectionLabel label="The Sanctuary" className="text-gold mb-4" align="center" />
         </TextReveal>
@@ -110,6 +94,7 @@ export function Hero() {
           </Button>
         </TextReveal>
       </motion.div>
+      </div>
 
       {/* ─── Torn Paper Transition at Bottom ─── */}
       <div className="absolute bottom-0 left-0 w-full z-30">
