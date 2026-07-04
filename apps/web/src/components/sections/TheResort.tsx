@@ -6,7 +6,7 @@ import { TextReveal } from "../ui/TextReveal";
 import { SectionLabel } from "../ui/SectionLabel";
 import { OrganicImage } from "../ui/OrganicImage";
 import { BotanicalSketch1 } from "@/lib/decorative-svgs"; 
-import { resortData } from "@/data/resort-data";
+import { resortData } from "@/config/resort-data";
 
 export function TheResort() {
   const ref = useRef(null);
