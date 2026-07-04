@@ -17,13 +17,15 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
-    
     const previous = scrollY.getPrevious() || 0;
     
+    setIsScrollingDown(latest > previous);
+
     // Hide when scrolling down past 150px, show when scrolling up
     if (latest > previous && latest > 150) {
       setIsHidden(true);
@@ -55,18 +57,28 @@ export function Navbar() {
     }
   };
 
+  const showBackground = isScrolled && !isOpen && !isScrollingDown;
+
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-500 ${
-          isScrolled && !isOpen
-            ? "pt-3 pb-0 md:pt-5 bg-[#FEFDF5]"
-            : "py-4 md:py-6 bg-transparent"
-        } ${isHidden ? "lg:-translate-y-[150%]" : "lg:translate-y-0"}`}
+        className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-500 pt-3 pb-0 md:pt-5 ${isHidden ? "-translate-y-[150%]" : "translate-y-0"}`}
       >
+        {/* Animated Sliding Background */}
+        <div 
+          className={`absolute top-0 left-0 w-full h-full bg-[#FEFDF5] -z-10 transition-all duration-500 ${
+            showBackground ? "translate-y-0 opacity-100" : "-translate-y-[200%] opacity-0"
+          }`}
+        >
+          {/* Torn Paper Bottom Edge */}
+          <div className="absolute top-[99%] left-0 w-full [&>div>svg]:!h-6 [&>div>svg]:md:!h-8 [&>div>svg]:lg:!h-10 pointer-events-none">
+            <TornPaper position="top" color="#FEFDF5" className="[&_svg]:!drop-shadow-sm" />
+          </div>
+        </div>
+
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between relative pb-0 md:pb-0">
           
           {/* Desktop Left Links */}
@@ -115,13 +127,8 @@ export function Navbar() {
           </button>
         </div>
 
-        {/* Torn Paper Bottom Edge */}
-        <div className={`absolute top-[99%] left-0 w-full transition-opacity duration-500 [&>div>svg]:!h-6 [&>div>svg]:md:!h-8 [&>div>svg]:lg:!h-10 pointer-events-none ${isScrolled && !isOpen ? (isHidden ? 'opacity-100 lg:opacity-0' : 'opacity-100') : 'opacity-0'}`}>
-          <TornPaper position="top" color="#FEFDF5" className="[&_svg]:!drop-shadow-sm" />
-        </div>
-      </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      </motion.nav>
       <AnimatePresence>
         {isOpen && (
           <motion.div
